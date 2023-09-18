@@ -38,3 +38,7 @@ Route::get('/deleteproduct/{id}', 'App\Http\Controllers\productController@delete
 Route::get('/updateproduct/{id}', 'App\Http\Controllers\productController@updateproductview');
 
 Route::Post('/updateproducts', 'App\Http\Controllers\productController@updateproduct');
+
+Route::get('/user',function(){
+    return view('user');
+});

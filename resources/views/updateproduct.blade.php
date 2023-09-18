@@ -15,6 +15,9 @@
             <label for="name">Product:</label>
             <input type="text" class="form-control" name="name" value="{{ $productdata->name }}"/>
             <br>
+            <label for="category">Category:</label>
+            <input type="text" class="form-control" name="category" value="{{ $productdata->category }}"/>
+            <br>
             <label for="price">Price:</label>
             <input type="text" class="form-control" name="price" value="{{ $productdata->price }}"/>
             <br>

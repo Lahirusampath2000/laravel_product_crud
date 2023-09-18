@@ -19,12 +19,17 @@
                             {{$error}}
                         </div>
                     @endforeach
-                    <form method='Post' action="{{ route('saveProduct') }}">
+                    <form method='Post' action="{{ route('saveProduct') }}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <input type='text' class='form-control' name='name' placeholder='Enter product name'>
                         <input type='text' class='form-control' name='price' placeholder='Enter price'>
                         <input type='text' class='form-control' name='quantity' placeholder='Enter quantity'>
+                        <input type='text' class='form-control' name='category' placeholder='Enter category'>
                         <br>
+                        <div class="form-group">
+                            <label for="image">Image:</label>
+                            <input type="file" name="image" class="form-control" accept="image/*">
+                        </div>
                         <input type='submit' class='btn btn-primary' value='SAVE'>
                         <input type='button' class='btn btn-warning' value='Clear'>
                     </form>
@@ -33,14 +38,22 @@
                         <table class="table table-dark">
                             <th>ID</th>
                             <th>Product</th>
+                            <th>Category</th>
                             <th>price</th>
                             <th>quantity</th>
                             @foreach($products as $product)
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
+                                    <td>{{$product->category}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->quantity}}</td>
+                                    <td>
+                                        @if($product->image)
+                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{$product->name}} Image" width="50" height="50" class="img img-responsive"/>
+
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="/deleteproduct/{{$product->id}}" class="btn btn-warning">Delete</a>
                                     </td>

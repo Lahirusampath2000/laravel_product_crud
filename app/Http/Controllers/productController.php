@@ -13,6 +13,7 @@ class productController extends Controller
             'name' => 'required|max:255',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
+            'category' => 'required|max:255'
         ]);
 
         
@@ -21,6 +22,12 @@ class productController extends Controller
         $product->name=$request->input('name');
         $product->price=$request->input('price');
         $product->quantity=$request->input('quantity');
+        $product->category=$request->input('category');
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('product_images', 'public');
+            $product->image = $imagePath;
+        }
         $product->save();
         return back()->with('success', 'Product added successfully');
 
@@ -59,8 +66,10 @@ class productController extends Controller
         $name=$request->name;
         $price=$request->price;
         $quantity=$request->quantity;
+        $category=$request->category;
         $data=Product::find($id);
         $data->name=$name;
+        $data->category=$category;
         $data->price=$price;
         $data->quantity=$quantity;
         $data->save();

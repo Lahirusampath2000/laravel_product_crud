@@ -82,5 +82,19 @@ class productController extends Controller
         
 
     
-}
+    }
+    
+    
+
+    public function searchProduct(Request $request){
+        $searchTerm = $request->input('searchTerm');
+    
+        $products = Product::where('name', 'like', '%' . $searchTerm . '%')
+            ->orWhere('category', 'like', '%' . $searchTerm . '%')
+            ->get();
+    
+        return view('user')->with('products', $products);
+    }
+
+
 }

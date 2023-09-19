@@ -42,3 +42,6 @@ Route::Post('/updateproducts', 'App\Http\Controllers\productController@updatepro
 Route::get('/user',function(){
     return view('user');
 });
+
+Route::get('/searchProducts', 'App\Http\Controllers\productController@searchProduct')->name('searchProducts');
+

@@ -45,3 +45,8 @@ Route::get('/user',function(){
 
 Route::get('/searchProducts', 'App\Http\Controllers\productController@searchProduct')->name('searchProducts');
 
+Route::post('/cart/{productId}', 'App\Http\Controllers\CartController@addToCart')->name('addToCart');
+
+Route::get('/cart', 'App\Http\Controllers\CartController@showCart')->name('cart');
+
+Route::post('/remove-from-cart/{productId}', 'App\Http\Controllers\CartController@removeFromCart')->name('removeFromCart');

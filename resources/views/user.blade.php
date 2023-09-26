@@ -7,10 +7,16 @@
     
 
     <style>
+    
+    .search-controller{
+        position: absolute;
+        right:700px;
+    }
+    
                                                        
     .login-register-buttons {
         position: absolute;
-        top: 20px;
+        top: 10px;
         right: 20px; 
     }
 
@@ -84,11 +90,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Include Bootstrap's CSS -->
+   
 
 
 </head>
 
 <body>
+
+    <div class="nav-controller">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/user">Products</a>
+                <a class="nav-item nav-link" href="/cart">Shopping cart</a>
+                <a class="nav-item nav-link" href="/">user</a>
+            </div>
+                <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('searchProducts') }}">
+                    {{csrf_field()}}
+                <div class="search-controller">
+                    <input  class="form-control mr-sm-2" name="searchTerm" placeholder="Search for products">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </div>
+                    
+                </form>
+            </div>
+        </nav>
+
+    </div>
+    <!----------------navbar------------>
+     
+    <!-------------nav bar end--------->
     <div class="login-register-buttons">
         <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
         <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
@@ -108,13 +145,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="/slide-image/redbull-slide.jpg" alt="First slide">
+                    <img class="d-block w-100" src="/slide-image/pepsi.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" src="/slide-image/icecream2-slide.jpg" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="/slide-image/coke-slide.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="/slide-image/cokee-slide.jpg" alt="Third slide">
                 </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -126,7 +163,7 @@
             <span class="sr-only">Next</span>
         </a>
         </div>
-        <div class="search-container text-center" style="position: absolute; top: 7%; left: 50%; transform: translate(-50%, -50%); ">
+       <!------ <div class="search-container text-center" style="position: absolute; top: 7%; left: 50%; transform: translate(-50%, -50%); ">
             
                 
             <form method="GET" action="{{ route('searchProducts') }}" class="form-inline"  >
@@ -135,20 +172,21 @@
                     <input type="text" class="form-control" name="searchTerm" placeholder="Search for products" style="width: 800px;  background-color: transparent; border: 1px solid #ccc; border-radius: 5px;" onfocus="this.style.color='#fff';" onblur="this.style.color='#fff';">
                     
                     <button type="submit" class="btn btn-outline-primary">
-                        <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+                        <i class="fas fa-search"></i> 
                     </button>
                     
                 </div>
-                   <!--<div class="form-group">
+                   <div class="form-group">
                         <button type="submit" class="btn btn-outline-primary">Search</button>
-                    </div> -->
+                    </div>
                     
             </form>
                 
                 
             
             
-        </div>
+        </div>-------------------->          
+        
     </div>
 
     
@@ -192,6 +230,44 @@
             </div>
             <br>
             <!--view by category-->
+            
+
+        
+            <br>
+            <br>
+        @if(isset($products) && count($products) > 0)
+            <div class="row">
+            
+                @foreach($products as $product)
+                    <div class="col-md-4 mb-4">
+                        <div class="card product-card" >
+                            <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                                <img src="{{ asset('storage/' . $product->image) }}" class="product-image" alt="{{ $product->name }}" width="150" height="180">
+                            </div>
+                
+                            
+                            <div class="card-body" style="height: 150px; overflow-y: auto;">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <p class="card-text">
+                                    
+                                    <span class="small-text">Price: Rs.{{ number_format($product->price ,2)}}
+                                    <span class="float-right small-text">Quantity: {{ $product->quantity }}
+                                </p>
+                                
+                            </div>
+                            <div class="card-footer text-center">
+                                <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">Buy Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            
+            </div>
+        @endisset
+        <!-------------view by category---------------->
             <div class="row">
 
                 <div class="col-md-4 mb-4">
@@ -199,7 +275,8 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/choc_category.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'Chocolate') }}" class="view-button">View</a>
+                                <!--<button class="view-button">View</button>-->
                             </div>
                             
                         </div>
@@ -361,40 +438,7 @@
                     </div>    
                 </div>
             </div>
-
         
-            <br>
-            <br>
-            <div class="row">
-            @isset($products)
-                @foreach($products as $product)
-                    <div class="col-md-4 mb-4">
-                        <div class="card product-card" >
-                            <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
-                                <img src="{{ asset('storage/' . $product->image) }}" class="product-image" alt="{{ $product->name }}" width="150" height="180">
-                            </div>
-                
-                            
-                            <div class="card-body" style="height: 150px; overflow-y: auto;">
-                                <h5 class="card-title">{{ $product->name }}</h5>
-                                <p class="card-text">
-                                    
-                                    <span class="small-text">Price: Rs.{{ number_format($product->price ,2)}}
-                                    <span class="float-right small-text">Quantity: {{ $product->quantity }}
-                                </p>
-                                
-                            </div>
-                            <div class="card-footer text-center">
-                                <form action="{{ route('addToCart', $product->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-success">Buy Now</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            @endisset
-        </div>
 
     </div>
 

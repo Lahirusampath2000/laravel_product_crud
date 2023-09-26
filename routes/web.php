@@ -50,3 +50,7 @@ Route::post('/cart/{productId}', 'App\Http\Controllers\CartController@addToCart'
 Route::get('/cart', 'App\Http\Controllers\CartController@showCart')->name('cart');
 
 Route::post('/remove-from-cart/{productId}', 'App\Http\Controllers\CartController@removeFromCart')->name('removeFromCart');
+
+Route::get('/checkout', 'App\Http\Controllers\CartController@checkout');
+
+Route::get('/user/showProductsByCategory/{category}', 'App\Http\Controllers\productController@showProductsByCategory')->name('showProductsByCategory');

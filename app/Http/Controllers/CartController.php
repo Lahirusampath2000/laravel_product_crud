@@ -69,4 +69,17 @@ class CartController extends Controller
         return redirect()->route('cart')->with('error', 'Product not found in cart.');
     
     }
+
+    public function checkout(){
+        $cart = session()->get('cart', []);
+
+    // Calculate the total price of items in the cart (you can modify this logic as needed)
+        $totalCartPrice = 0;
+        foreach ($cart as $item) {
+            $totalCartPrice += $item['product']->price * $item['quantity'];
+        }
+
+        // Pass the cart and totalCartPrice variables to the checkout view
+        return view('checkout', compact('cart', 'totalCartPrice'));
+        }
 }

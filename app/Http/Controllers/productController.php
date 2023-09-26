@@ -97,4 +97,18 @@ class productController extends Controller
     }
 
 
+    
+
+    public function showProductsByCategory($category){
+
+        
+        $products= Product::where('category', $category)->get();
+
+        return view('showProductsByCategory',compact('products'));
+
+
+
+    }
+
+
 }

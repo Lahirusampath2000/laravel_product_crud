@@ -31,7 +31,7 @@
     }
         .login-register-buttons {
             position: absolute;
-            top: 20px; /* Adjust the top position as needed */
+            top: 10px; /* Adjust the top position as needed */
             right: 20px; /* Adjust the right position as needed */
         }
 
@@ -56,9 +56,31 @@
             font-family: 'Roboto',  sans-serif;
             font-size: 23px;
         }
+
+        
     </style>
 </head>
 <body>
+
+
+    <div class="nav-controller">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active home" href="#" >Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/user" style="color:white">Products</a>
+                <a class="nav-item nav-link" href="/cart" style="color:white">Shopping cart</a>
+                <a class="nav-item nav-link" href="/" style="color:white">user</a>
+            </div>
+            </div>
+        </nav>
+
+    </div>
+
     <header>
         <div class="login-register-buttons">
             <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
@@ -113,7 +135,7 @@
         </div>
 
         //<div class="text-center">
-            <a  class="btn btn-primary">Proceed to Checkout</a>
+            <a  class="btn btn-primary" href="{{('/checkout')}}">Proceed to Checkout</a>
         </div>
 
         @else

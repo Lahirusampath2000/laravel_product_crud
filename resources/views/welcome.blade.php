@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/user">Products</a>
+                <a class="nav-item nav-link" href="/user">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
                 <a class="nav-item nav-link" href="/">user</a>
             </div>
@@ -98,8 +98,9 @@
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->quantity}}</td>
                                     <td>
+                                    
                                         @if($product->image)
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{$product->name}} Image" width="50" height="50" class="img img-responsive"/>
+                                        <img src="{{ asset('storage/product_images/' . $product->image) }}" alt="{{$product->name}} Image" width="50" height="50" class="img img-responsive"/>
 
                                         @endif
                                     </td>

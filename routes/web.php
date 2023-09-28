@@ -54,3 +54,4 @@ Route::post('/remove-from-cart/{productId}', 'App\Http\Controllers\CartControlle
 Route::get('/checkout', 'App\Http\Controllers\CartController@checkout');
 
 Route::get('/user/showProductsByCategory/{category}', 'App\Http\Controllers\productController@showProductsByCategory')->name('showProductsByCategory');
+

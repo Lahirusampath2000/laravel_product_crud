@@ -80,6 +80,175 @@
     height: 100%;
 }
 
+ /*------------------------------------------footer--------------------*/
+ ul {
+            margin: 0px;
+            padding: 0px;
+        }
+        .footer-section {
+        background: #151414;
+        position: relative;
+        }
+        .footer-cta {
+        border-bottom: 1px solid #373636;
+        }
+        .single-cta i {
+        color: #ff5e14;
+        font-size: 30px;
+        float: left;
+        margin-top: 8px;
+        }
+        .cta-text {
+        padding-left: 15px;
+        display: inline-block;
+        }
+        .cta-text h4 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 2px;
+        }
+        .cta-text span {
+        color: #757575;
+        font-size: 15px;
+        }
+        .footer-content {
+        position: relative;
+        z-index: 2;
+        }
+        .footer-pattern img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 330px;
+        background-size: cover;
+        background-position: 100% 100%;
+        }
+        .footer-logo {
+        margin-bottom: 30px;
+        }
+        .footer-logo img {
+            max-width: 200px;
+        }
+        .footer-text p {
+        margin-bottom: 14px;
+        font-size: 14px;
+            color: #7e7e7e;
+        line-height: 28px;
+        }
+        .footer-social-icon span {
+        color: #fff;
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
+        }
+        .footer-social-icon a {
+        color: #fff;
+        font-size: 16px;
+        margin-right: 15px;
+        }
+        .footer-social-icon i {
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 38px;
+        border-radius: 50%;
+        }
+        .facebook-bg{
+        background: #3B5998;
+        }
+        .twitter-bg{
+        background: #55ACEE;
+        }
+        .google-bg{
+        background: #DD4B39;
+        }
+        .footer-widget-heading h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        position: relative;
+        }
+        .footer-widget-heading h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -15px;
+        height: 2px;
+        width: 50px;
+        background: #ff5e14;
+        }
+        .footer-widget ul li {
+        display: inline-block;
+        float: left;
+        width: 50%;
+        margin-bottom: 12px;
+        }
+        .footer-widget ul li a:hover{
+        color: #ff5e14;
+        }
+        .footer-widget ul li a {
+        color: #878787;
+        text-transform: capitalize;
+        }
+        .subscribe-form {
+        position: relative;
+        overflow: hidden;
+        }
+        .subscribe-form input {
+        width: 100%;
+        padding: 14px 28px;
+        background: #2E2E2E;
+        border: 1px solid #2E2E2E;
+        color: #fff;
+        }
+        .subscribe-form button {
+            position: absolute;
+            right: 0;
+            background: #ff5e14;
+            padding: 13px 20px;
+            border: 1px solid #ff5e14;
+            top: 0;
+        }
+        .subscribe-form button i {
+        color: #fff;
+        font-size: 22px;
+        transform: rotate(-6deg);
+        }
+        .copyright-area{
+        background: #202020;
+        padding: 25px 0;
+        }
+        .copyright-text p {
+        margin: 0;
+        font-size: 14px;
+        color: #878787;
+        }
+        .copyright-text p a{
+        color: #ff5e14;
+        }
+        .footer-menu li {
+        display: inline-block;
+        margin-left: 20px;
+        }
+        .footer-menu li:hover a{
+        color: #ff5e14;
+        }
+        .footer-menu li a {
+        font-size: 14px;
+        color: #878787;
+        }
+        .img-fluid{
+            max-width:150px;
+            max-height:150px;
+            border-radius: 50%;
+        }
+
+
+
     
 
     
@@ -97,7 +266,7 @@
 </head>
 
 <body>
-
+    <!----------------navbar------------>
     <div class="nav-controller">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
             <a class="navbar-brand" href="#"></a>
@@ -107,7 +276,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/user">Products</a>
+                <a class="nav-item nav-link" href="/user">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
                 <a class="nav-item nav-link" href="/">user</a>
             </div>
@@ -123,7 +292,7 @@
         </nav>
 
     </div>
-    <!----------------navbar------------>
+    
      
     <!-------------nav bar end--------->
     <div class="login-register-buttons">
@@ -225,11 +394,9 @@
             </div>
             <br>
             <br>
-            <div>
-                <h2>shop by category</h2>
-            </div>
-            <br>
-            <!--view by category-->
+            
+            
+            
             
 
         
@@ -242,12 +409,12 @@
                     <div class="col-md-4 mb-4">
                         <div class="card product-card" >
                             <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
-                                <img src="{{ asset('storage/' . $product->image) }}" class="product-image" alt="{{ $product->name }}" width="150" height="180">
+                                <img src="{{ asset('storage/product_images/' . $product->image) }}" class="product-image" alt="{{ $product->name }}" width="150" height="180">
                             </div>
                 
                             
                             <div class="card-body" style="height: 150px; overflow-y: auto;">
-                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <h5 class="card-title" style="text-align:center">{{ $product->name }}</h5>
                                 <p class="card-text">
                                     
                                     <span class="small-text">Price: Rs.{{ number_format($product->price ,2)}}
@@ -268,6 +435,14 @@
             </div>
         @endisset
         <!-------------view by category---------------->
+        <br>
+        <br>
+        <br>
+            <div style="text-align:center">
+                <h2>shop by category</h2>
+            </div>
+            <br>
+            <br>
             <div class="row">
 
                 <div class="col-md-4 mb-4">
@@ -293,7 +468,7 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/biscuit-category.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'biscuit') }}" class="view-button">View</a>
                             </div>
                         </div>
                         <div class="card-footer text-center">
@@ -309,7 +484,7 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/category-icecream.jpeg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'icecream') }}" class="view-button">View</a>
                             </div>
                             
                         </div>
@@ -337,13 +512,13 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/bev_cat.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'beverages') }}" class="view-button">View</a>
                             </div>
                             
                         
                         </div>
                         <div class="card-footer text-center">
-                            <h5 class="text-center" style="font-family: 'Roboto', sans-serif;">Ice cream</h5>
+                            <h5 class="text-center" style="font-family: 'Roboto', sans-serif;">Beverages</h5>
                         </div> 
                     
                     
@@ -355,7 +530,7 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/diary-cat.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'diary food') }}" class="view-button">View</a>
                             </div>
                             
                         </div>
@@ -372,7 +547,7 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/household-cat.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'household') }}" class="view-button">View</a>
                             </div>
                             
                         </div>
@@ -392,7 +567,7 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/inst_cat.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'instant food') }}" class="view-button">View</a>
                             </div>
                             
                         </div>
@@ -409,7 +584,7 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/meat-cat.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'meat') }}" class="view-button">View</a>
                             </div>
                             
                         </div>
@@ -426,7 +601,7 @@
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/fruit.jpg" class="category-image" alt="" width="250" height="300">
-                                <button class="view-button">View</button>
+                                <a href="{{ route('showProductsByCategory', 'fruit') }}" class="view-button">View</a>
                             </div>
                             
                         </div>
@@ -440,6 +615,123 @@
             </div>
         
 
+    </div>
+    <br>
+    <br>
+    <br>
+
+     <!------------------------footer------------------------>
+     <div class="footer">
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>+94 76 475 8136</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>lahiru123@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="logo/supermarket.jpg" class="img-fluid" alt="logo"></a>
+                            </div>
+                            <div class="footer-text">
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
+                                elit,Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div class="footer-social-icon text-center" style="text-align: center; ">
+                                <span>Follow us</span>
+                                <a href="#" ><i class="fab fa-facebook-f fa-2x" style="color: #3b5998;"></i></a>
+                                <a href="#" ><i class="fab fa-twitter fa-2x" style="color: #55acee;"></i></a>
+                                <a href="#"><i class="fab fa-google fa-2x" style="color: #dd4b39;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">about us</a></li>
+                                <li><a href="http://127.0.0.1:8000/user">Dashboard</a></li>
+                                <li><a href="http://127.0.0.1:8000/cart">Shopping cart</a></li>
+                                <li><a href="#">Contact us</a></li>                            
+                                
+                            </ul>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Policy</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+  <!-----------------------------end of footer------------------->
     </div>
 
     

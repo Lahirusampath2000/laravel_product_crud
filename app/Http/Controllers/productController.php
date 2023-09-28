@@ -25,7 +25,8 @@ class productController extends Controller
         $product->category=$request->input('category');
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('product_images', 'public');
+            $imagePath = $request->file('image')->store('/', 'public');
+           
             $product->image = $imagePath;
         }
         $product->save();
@@ -102,13 +103,19 @@ class productController extends Controller
     public function showProductsByCategory($category){
 
         
-        $products= Product::where('category', $category)->get();
+        $products= Product::where('category', $category)
+                   ->orWhere('name', 'like',"%$category%")
+                   ->get();
 
         return view('showProductsByCategory',compact('products'));
 
 
 
     }
+
+    
+
+
 
 
 }

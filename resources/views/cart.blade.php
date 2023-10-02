@@ -306,7 +306,7 @@
             <strong>Total: Rs.{{ $totalCartPrice }}</strong>
         </div>
 
-        //<div class="text-center">
+        <div class="text-center">
             <a  class="btn btn-primary" href="{{('/checkout')}}">Proceed to Checkout</a>
         </div>
 
@@ -314,7 +314,7 @@
         <p>Your cart is empty.</p>
         @endif
     </div>
-    <br>
+    
     <br>
     <br>
       <!--------------------------------footer------------------------------------>  
@@ -381,7 +381,7 @@
                                 <li><a href="#">about us</a></li>
                                 <li><a href="http://127.0.0.1:8000/user">Dashboard</a></li>
                                 <li><a href="http://127.0.0.1:8000/cart">Shopping cart</a></li>
-                                <li><a href="#">Contact us</a></li>                            
+                                <li><a href="http://127.0.0.1:8000/contactus">Contact us</a></li>                            
                                 
                             </ul>
                         </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -684,7 +685,7 @@
                                 <li><a href="#">about us</a></li>
                                 <li><a href="http://127.0.0.1:8000/user">Dashboard</a></li>
                                 <li><a href="http://127.0.0.1:8000/cart">Shopping cart</a></li>
-                                <li><a href="#">Contact us</a></li>                            
+                                <li><a href="http://127.0.0.1:8000/contactus">Contact us</a></li>                            
                                 
                             </ul>
                         </div>

@@ -6,6 +6,15 @@
         <form method="POST" action="{{ route('login') }}" class="bg-white rounded-lg p-6 shadow-md" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);">
             @csrf
 
+            <!-- Role Selection -->
+            <div class="mb-4">
+                <label for="role" class="block text-sm font-medium text-gray-600">Select Role:</label>
+                <select id="role" name="role" class="mt-1 p-2 border rounded-md w-full">
+                    <option value="user" selected>User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
             <!-- Email Address -->
             <div>
                 <x-input-label for="email" :value="__('Email')" />

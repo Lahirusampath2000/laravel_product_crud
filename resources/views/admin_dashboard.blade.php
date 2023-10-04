@@ -3,32 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-image: url('/bg-image/pxfuel.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-
-        .form-control::placeholder {
-            color: white;
-        }
-
         .login-register-buttons {
             position: absolute;
             top: 10px;
             right: 20px; 
-    }
+        }
     </style>
-
-    
 </head>
 <body>
-<!--------------------navbar------------->
+
+         <!----------------navbar------------>
     <div class="nav-controller">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
             <a class="navbar-brand" href="#"></a>
@@ -42,11 +31,21 @@
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
                 <a class="nav-item nav-link" href="/">Admin</a>
             </div>
+                <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('searchProducts') }}">
+                    {{csrf_field()}}
+                <div class="search-controller">
+                    <input  class="form-control mr-sm-2" name="searchTerm" placeholder="Search for products">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </div>
+                    
+                </form>
             </div>
         </nav>
 
     </div>
-
+    
+     
+    <!-------------nav bar end--------->
     <div class="login-register-buttons">
             @guest
                 <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
@@ -133,5 +132,7 @@
     </div>
     </div>
     
+</body>
+</html>
 </body>
 </html>

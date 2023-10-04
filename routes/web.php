@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,20 @@ $data=App\Models\Product::all();
     return view('welcome')->with('products',$data);
 });
 
+/* ---------------admin route-----------     */ 
+Route::prefix('admin')->group(function(){
+
+Route::get('/login_admin',[AdminController::class, 'Index'])->name('login_form');
+Route::get('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
+Route::get('/dashboard',[AdminController::class, 'Dashboard'])->name('admin.dashboard');
+});
+/* ---------------end admin route-----------     */
+
+
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+Route::get('/home',[HomeController::class, 'index']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -32,6 +48,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+
+
 Route::Post('/saveProduct', 'App\Http\Controllers\productController@store')->name('saveProduct');
 
 Route::get('/deleteproduct/{id}', 'App\Http\Controllers\productController@deleteproduct');
@@ -42,6 +60,10 @@ Route::Post('/updateproducts', 'App\Http\Controllers\productController@updatepro
 
 Route::get('/user',function(){
     return view('user');
+});
+
+Route::get('/default',function(){
+    return view('default');
 });
 
 Route::get('/searchProducts', 'App\Http\Controllers\productController@searchProduct')->name('searchProducts');

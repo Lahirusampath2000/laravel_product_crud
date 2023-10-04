@@ -276,10 +276,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
-                <a class="nav-item nav-link" href="/">user</a>
+                <a class="nav-item nav-link" href="/">Admin</a>
             </div>
                 <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('searchProducts') }}">
                     {{csrf_field()}}
@@ -296,9 +296,24 @@
     
      
     <!-------------nav bar end--------->
-    <div class="login-register-buttons">
+    <!--<div class="login-register-buttons">
         <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
         <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
+    </div>-->
+
+    <div class="login-register-buttons">
+            @guest
+                <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
+                <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
+            @else
+                <a href="#" class="btn btn-outline-primary"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                     Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            @endguest
     </div>
 
 
@@ -368,10 +383,12 @@
 
 
 
-    <div class="login-register-buttons">
+    <!--<div class="login-register-buttons">
         <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
         <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
-    </div>
+    </div>-->
+
+    
     <div class='container' >
             <div class="row">
                 <div class='col-md-12 text-center'>

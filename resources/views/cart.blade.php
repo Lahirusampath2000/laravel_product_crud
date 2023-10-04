@@ -243,22 +243,39 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active home" href="#" >Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active home" href="/home" >Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user" style="color:white">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart" style="color:white">Shopping cart</a>
-                <a class="nav-item nav-link" href="/" style="color:white">user</a>
+                <a class="nav-item nav-link" href="/" style="color:white">Admin</a>
             </div>
             </div>
         </nav>
 
     </div>
 
+
+
     <header>
-        <div class="login-register-buttons">
+        <!--<div class="login-register-buttons">
             <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
             <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
-        </div>
+        </div>--->
         <!-- Your common header content here, including login and register buttons -->
+
+        <div class="login-register-buttons">
+            @guest
+                <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
+                <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
+            @else
+                <a href="#" class="btn btn-outline-primary"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                     Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            @endguest
+        </div>
         
     </header>
     <div class="background-image"></div>

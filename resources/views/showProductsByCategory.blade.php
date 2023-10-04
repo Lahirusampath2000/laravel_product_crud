@@ -101,8 +101,18 @@
      
     <!-------------nav bar end--------->
     <div class="login-register-buttons">
-        <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
-        <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
+            @guest
+                <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
+                <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
+            @else
+                <a href="#" class="btn btn-outline-primary"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                     Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            @endguest
     </div>
 
 

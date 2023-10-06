@@ -31,6 +31,13 @@
         height: auto;
     }*/
 
+    .nav-logo {
+        margin-bottom: 5px;
+    }
+    .nav-logo img {
+        max-width: 50px;
+    }
+
     .product-card .small-text {
     font-size: 14px; 
     color: #555; 
@@ -77,6 +84,20 @@
 
 /* Center the images vertically within the slider */
 .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.special-carousel-inner {
+    height: 350px; /* Adjust this value to your desired height */
+}
+
+.special-slide {
+    height: 350px; /* Adjust this value to your desired height */
+}
+
+/* Center the images vertically within the slider */
+.special-carousel-item img {
     object-fit: cover;
     height: 100%;
 }
@@ -248,6 +269,25 @@
             border-radius: 50%;
         }
 
+        .special-product-card {
+            max-width: 150px;
+            margin: 0 10px 20px 10px;
+        }
+
+        .special-product-image {
+            max-width: 100%;
+            max-height: 80%;
+        }
+
+        .card-body {
+            height: 100px;
+            overflow-y: auto;
+        }
+
+        .card-footer {
+            text-align: center;
+        }
+
 
 
     
@@ -274,13 +314,34 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="nav-logo">
+                <a href="index.html"><img src="logo/supermarket.jpg" class="img-fluid" alt="logo"></a>
+            </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
-                <a class="nav-item nav-link" href="/">Admin</a>
-            </div>
+                <a class="nav-item nav-link" href="/admin">Admin</a>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                    <!-- Add category-related links here -->
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'Chocolate') }}">Chocolate</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'biscuit') }}">Biscuit</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'icecream') }}">Ice cream</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'beverages') }}">Beverages</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'diary food') }}">Diary Food</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'household') }}">Household</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'instant food') }}">Instant Food</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'meat') }}">Meat</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'fruit') }}">Fruit</a>
+                
+                    </div>
+                </li>
                 <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('searchProducts') }}">
                     {{csrf_field()}}
                 <div class="search-controller">
@@ -637,6 +698,91 @@
     <br>
     <br>
     <br>
+    <br>
+    
+    <div class="slider-container" style="position: relative;">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="special-carousel-inner">
+                <div class="carousel-item active special-slide">
+                    <img class="d-block w-100" src="/slide-image/pizza-slide.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item special-slide">
+                    <img class="d-block w-100" src="/slide-image/biriyani.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item special-slide">
+                    <img class="d-block w-100" src="/slide-image/soupy.jpg" alt="Third slide">
+                </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        </div>
+    </div>
+    
+    
+
+  
+        <br>
+        <br>
+    <!---------special----->
+    @if(isset($specialProducts) && count($specialProducts) > 0)
+    <div style="text-align:center">
+        <h2>Family supermarket special</h2>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+        <div class="row ">
+            @foreach($specialProducts as $product)
+                <div class="col-md-4 mb-4 special-product-card">
+                    <div class="card product-card">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                            <img src="{{ asset('storage/product_images/' . $product->image) }}" class="product-image special-product-image" alt="{{ $product->name }}" width="150" height="180">
+                        </div>
+                        <div class="card-body" style="height: 150px; overflow-y: auto;">
+                            <h5 class="card-title" style="text-align:center">{{ $product->name }}</h5>
+                            <p class="card-text">
+                                <span class="small-text">Price: Rs.{{ number_format($product->price ,2) }}</span>
+                                <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Buy Now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+
+
+
+
+
+
+
+
+    
+
+            
+        
+    <br>
+    <br>
+    <br>
 
      <!------------------------footer------------------------>
      <div class="footer">
@@ -680,10 +826,7 @@
                             <div class="footer-logo">
                                 <a href="index.html"><img src="logo/supermarket.jpg" class="img-fluid" alt="logo"></a>
                             </div>
-                            <div class="footer-text">
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
-                                elit,Lorem ipsum dolor sit amet.</p>
-                            </div>
+                            
                             <div class="footer-social-icon text-center" style="text-align: center; ">
                                 <span>Follow us</span>
                                 <a href="#" ><i class="fab fa-facebook-f fa-2x" style="color: #3b5998;"></i></a>

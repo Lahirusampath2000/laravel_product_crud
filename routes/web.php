@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\productController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
 $data=App\Models\Product::all();
     return view('welcome')->with('products',$data);
 });
@@ -30,10 +30,14 @@ Route::get('/dashboard',[AdminController::class, 'Dashboard'])->name('admin.dash
 });
 /* ---------------end admin route-----------     */
 
+//Route::get('post', [HomeController::class,'post'])-> middleware(['auth','admin']);
+
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 Route::get('/home',[HomeController::class, 'index']);
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -62,7 +66,7 @@ Route::get('/user',function(){
     return view('user');
 });
 
-Route::get('/default',function(){
+Route::get('/',function(){
     return view('default');
 });
 
@@ -81,3 +85,5 @@ Route::get('/user/showProductsByCategory/{category}', 'App\Http\Controllers\prod
 Route::get('/contactus', function () {
     return view('contactus');
 });
+
+Route::get('/user', [productController::class, 'showUserPage'])->name('user'); //special product

@@ -113,6 +113,17 @@ class productController extends Controller
 
     }
 
+    public function showUserPage()
+    {
+        // Fetch special category products
+        $specialProducts = Product::where('category', 'special')->get();
+
+        // Other logic...
+
+        return view('user', compact('specialProducts', /* other variables you need */));
+    }
+
+
     
 
 

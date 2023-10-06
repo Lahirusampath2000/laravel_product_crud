@@ -17,12 +17,21 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::guard('admin')->check()){
-            return redirect()->route('login_form')->with('error','Please login');
+        if (auth()->check() && auth()->user()->role == 'admin') {
+            return $next($request);
         }
 
-
-
-        return $next($request);
+        abort(401, 'Unauthorized');
     }
+        //if(Auth()->user()->role=='admin'){
+           // return $next($request);
+       // }
+        //if(!Auth::guard('admin')->check()){
+            //return redirect()->route('login_form')->with('error','Please login');
+        //}
+        //abort(401);
+
+
+        //return $next($request);
+    
 }

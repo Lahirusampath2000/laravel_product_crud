@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function Index(){
-        return view('admin.admin_login');
+    public function __construct()
+    {
+        $this->middleware('admin');
     }
+
+    //public function Index(){
+        //return view('admin');
+    //}
 }

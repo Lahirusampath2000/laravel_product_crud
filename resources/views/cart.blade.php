@@ -23,6 +23,13 @@
             padding: 20px;
         }
 
+        .nav-logo {
+        margin-bottom: 5px;
+        }
+        .nav-logo img {
+            max-width: 50px;
+        }
+
 
 
         h1.font-weight-bold.text-primary.text-center {
@@ -241,12 +248,15 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="nav-logo">
+                <a href="index.html"><img src="logo/supermarket.jpg" class="img-fluid" alt="logo"></a>
+            </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active home" href="/home" >Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active home" href="/" >Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user" style="color:white">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart" style="color:white">Shopping cart</a>
-                <a class="nav-item nav-link" href="/" style="color:white">Admin</a>
+                <a class="nav-item nav-link" href="/admin" style="color:white">Admin</a>
             </div>
             </div>
         </nav>

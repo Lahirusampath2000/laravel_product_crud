@@ -37,10 +37,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
-                <a class="nav-item nav-link" href="/">Admin</a>
+                <a class="nav-item nav-link" href="/admin">Admin</a>
             </div>
             </div>
         </nav>
@@ -82,8 +82,23 @@
                         <input type='text' class='form-control' name='price' placeholder='Enter price' style="width: 800px;  background-color: transparent; border: 1px solid #ccc; border-radius: 5px;" onfocus="this.style.color='white';" onblur="this.style.color='black';">
                         <br>
                         <input type='text' class='form-control' name='quantity' placeholder='Enter quantity' style="width: 800px;  background-color: transparent; border: 1px solid #ccc; border-radius: 5px;" onfocus="this.style.color='white';" onblur="this.style.color='black';">
+                        
                         <br>
                         <input type='text' class='form-control' name='category' placeholder='Enter category' style="width: 800px;  background-color: transparent; border: 1px solid #ccc; border-radius: 5px;" onfocus="this.style.color='white';" onblur="this.style.color='black';">
+                        <!--<select class="form-control" name="category" style="width: 800px; background-color: transparent; border: 1px solid #ccc; border-radius: 5px; color: white;">
+                            <option value="" disabled selected style="color: white;">Select Category</option>
+                            <option value="chocolate" style="color: black;">chocolate</option>
+                            <option value="biscuit" style="color: black;">biscuit</option>
+                            <option value="ice cream" style="color: black;">ice cream</option>
+                            <option value="Beverages" style="color: black;">Beverages</option>
+                            <option value="Diary food" style="color: black;">Diary food</option>
+                            <option value="Household" style="color: black;">Household</option>
+                            <option value="Instant Food" style="color: black;">Instant Food</option>
+                            <option value="Meat" style="color: black;">Meat</option>
+                            <option value="Fruit" style="color: black;">Fruit</option>
+                            <option  style="color: black;">Special</option>
+    
+                        </select>-->
                         <br>
                         <div class="form-group">
                             <label for="image">Image:</label>

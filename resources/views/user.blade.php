@@ -87,7 +87,7 @@
     object-fit: cover;
     height: 100%;
 }
-
+/*-----------------------special product section------------*/ 
 .special-carousel-inner {
     height: 350px; /* Adjust this value to your desired height */
 }
@@ -100,6 +100,10 @@
 .special-carousel-item img {
     object-fit: cover;
     height: 100%;
+}
+
+.special-product-card {
+    max-width: 100%;
 }
 
  /*------------------------------------------footer--------------------*/
@@ -288,6 +292,27 @@
             text-align: center;
         }
 
+        .dt-container {
+            color: #fff; 
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; 
+            font-family: arial;
+            font-weight: bold;
+            border:1px solid #FFD700;
+            width:340px;
+            padding:10px;
+            margin-left: auto;
+            margin-right: 300px;
+        }
+
+        .footer-logo{
+            margin-left: 130px;
+            margin-right: auto; 
+        }
+
+        
+
+        
+
 
 
     
@@ -300,13 +325,59 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="..." crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="..." crossorigin="anonymous"></script>
     <!-- Include Bootstrap's CSS -->
    
 
 
 </head>
 
-<body>
+<body onLoad="renderTime();">
+    <!---------------------------------date and time script------------------------>
+    <script>
+        function renderTime(){
+            //date
+            var mydate = new Date();
+            var year =mydate.getYear();
+                if(year <1000){
+                    year +=1900
+                }
+            var day = mydate.getDay();
+            var month =mydate.getMonth();
+            var daym = mydate.getDate();
+            var dayarray = new Array("Sunday,","Monday,","Tuesday,","Wednesday,","Thursday,","Friday,","Saturday,");
+            var montharray= new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+            //date end
+
+            //Time
+            var currentTime= new Date();
+            var h= currentTime.getHours();
+            var m= currentTime.getMinutes();
+            var s= currentTime.getSeconds();
+                if(h==24){
+                    h=0;
+                }else if(h>12){
+                    h=h-0;
+                }
+
+                if(h<10){
+                    h="0"+h;
+                }
+                if(m<10){
+                    m="0"+m;
+                }
+                if(s<10){
+                    s="0"+s;
+                }
+                var myClock=document.getElementById("clockDisplay");
+                myClock.textContent=""+dayarray[day]+" "+daym+" "+montharray[month]+" "+year+" | "+h+":"+m+":"+s;
+                myClock.innerText=""+dayarray[day]+" "+daym+" "+montharray[month]+" "+year+" | "+h+":"+m+":"+s;
+
+                setTimeout("renderTime()",1000);
+        } 
+        renderTime();      
+    </script>
     <!----------------navbar------------>
     <div class="nav-controller">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
@@ -332,7 +403,7 @@
                     <!-- Add category-related links here -->
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'Chocolate') }}">Chocolate</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'biscuit') }}">Biscuit</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'icecream') }}">Ice cream</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'bakery') }}">Bakery</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'beverages') }}">Beverages</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'diary food') }}">Diary Food</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'household') }}">Household</a>
@@ -342,6 +413,7 @@
                 
                     </div>
                 </li>
+                
                 <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('searchProducts') }}">
                     {{csrf_field()}}
                 <div class="search-controller">
@@ -350,7 +422,9 @@
                 </div>
                     
                 </form>
+                
             </div>
+            <div id="clockDisplay" class="dt-container"></div>
         </nav>
 
     </div>
@@ -388,6 +462,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -398,6 +473,9 @@
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" src="/slide-image/cokee-slide.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="/slide-image/meat2.jpg" alt="Fourth slide">
                 </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -441,7 +519,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>    
 
 
     <!--<div class="login-register-buttons">
@@ -562,13 +640,13 @@
                     <div class="card product-card" style="height: 300px;" >
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
-                                <img src="/category_img/category-icecream.jpeg" class="category-image" alt="" width="250" height="300">
-                                <a href="{{ route('showProductsByCategory', 'icecream') }}" class="view-button">View</a>
+                                <img src="/category_img/bakery.jpg" class="category-image" alt="" width="250" height="300">
+                                <a href="{{ route('showProductsByCategory', 'bakery') }}" class="view-button">View</a>
                             </div>
                             
                         </div>
                         <div class="card-footer text-center">
-                            <h5 class="text-center" style="font-family: 'Roboto', sans-serif;">Ice cream</h5>
+                            <h5 class="text-center" style="font-family: 'Roboto', sans-serif;">Bakery</h5>
                         </div> 
                     
                     
@@ -706,6 +784,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="special-carousel-inner">
                 <div class="carousel-item active special-slide">
@@ -716,6 +795,9 @@
                 </div>
                 <div class="carousel-item special-slide">
                     <img class="d-block w-100" src="/slide-image/soupy.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item special-slide">
+                    <img class="d-block w-100" src="/slide-image/bbq.jpg" alt="Fourth slide">
                 </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -729,57 +811,88 @@
         </div>
     </div>
     
-    
+        <br>
+        <br>
+
+        @if(isset($specialProducts) && count($specialProducts) > 0)
+            <div style="text-align: center">
+                <h2>Family supermarket special</h2>
+            </div>
+            <br>
+            <br>
+            <div class="table-responsive">
+                <div class="d-flex overflow-auto">
+                    @foreach($specialProducts as $product)
+                        <div class="col-md-4 mb-4 special-product-card">
+                            <div class="card product-card">
+                                <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                                    <img src="{{ asset('storage/product_images/' . $product->image) }}" class="product-image special-product-image" alt="{{ $product->name }}" width="150" height="180">
+                                </div>
+                                <div class="card-body" style="height: 150px; overflow-y: auto;">
+                                    <h5 class="card-title text-center">{{ $product->name }}</h5>
+                                    <p class="card-text">
+                                        <span class="small-text">Price: Rs.{{ number_format($product->price, 2) }}</span>
+                                        <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
+                                    </p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Buy Now</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <!--<button class="btn btn-primary" style="position: absolute; left: 10px;" onclick="scrollProducts(-100)">Previous</button>
+                <button class="btn btn-primary" style="position: absolute; right: 10px;" onclick="scrollProducts(100)">Next</button>-->
+            </div>
+            <script>
+                function scrollProducts(amount) {
+                    $("#productContainer").animate({
+                        scrollLeft: $("#productContainer").scrollLeft() + amount
+                    }, "slow");
+                }
+            </script>
+        @endif
+        <!--@if(isset($specialProducts) && count($specialProducts) > 0)
+            <div style="text-align: center">
+                <h2>Family supermarket special</h2>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-borderless">
+                    <tr>
+                        @foreach($specialProducts as $product)
+                            <td class="special-product-card">
+                                <div class="card product-card">
+                                    <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                                        <img src="{{ asset('storage/product_images/' . $product->image) }}" class="product-image special-product-image" alt="{{ $product->name }}" width="150" height="180">
+                                    </div>
+                                    <div class="card-body" style="height: 150px; overflow-y: auto;">
+                                        <h5 class="card-title text-center">{{ $product->name }}</h5>
+                                        <p class="card-text">
+                                            <span class="small-text">Price: Rs.{{ number_format($product->price, 2) }}</span>
+                                            <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success">Buy Now</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        @endforeach
+                    </tr>
+                </table>
+            </div>
+        @endif-->
+            
 
   
-        <br>
-        <br>
-    <!---------special----->
-    @if(isset($specialProducts) && count($specialProducts) > 0)
-    <div style="text-align:center">
-        <h2>Family supermarket special</h2>
-    </div>
-    
-    <br>
-    <br>
-    <br>
-        <div class="row ">
-            @foreach($specialProducts as $product)
-                <div class="col-md-4 mb-4 special-product-card">
-                    <div class="card product-card">
-                        <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
-                            <img src="{{ asset('storage/product_images/' . $product->image) }}" class="product-image special-product-image" alt="{{ $product->name }}" width="150" height="180">
-                        </div>
-                        <div class="card-body" style="height: 150px; overflow-y: auto;">
-                            <h5 class="card-title" style="text-align:center">{{ $product->name }}</h5>
-                            <p class="card-text">
-                                <span class="small-text">Price: Rs.{{ number_format($product->price ,2) }}</span>
-                                <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
-                            </p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <form action="{{ route('addToCart', $product->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-success">Buy Now</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    @endif
-
-
-
-
-
-
-
-
-    
-
-            
-        
     <br>
     <br>
     <br>
@@ -823,9 +936,11 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 mb-50">
                         <div class="footer-widget">
-                            <div class="footer-logo">
+                            <div class="footer-logo" >
                                 <a href="index.html"><img src="logo/supermarket.jpg" class="img-fluid" alt="logo"></a>
                             </div>
+                            <br>
+                            <br>
                             
                             <div class="footer-social-icon text-center" style="text-align: center; ">
                                 <span>Follow us</span>
@@ -841,11 +956,11 @@
                                 <h3>Useful Links</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">about us</a></li>
-                                <li><a href="http://127.0.0.1:8000/user">Dashboard</a></li>
-                                <li><a href="http://127.0.0.1:8000/cart">Shopping cart</a></li>
-                                <li><a href="http://127.0.0.1:8000/contactus">Contact us</a></li>                            
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/aboutus">about us</a></li>
+                                <li><a href="/user">Dashboard</a></li>
+                                <li><a href="/cart">Shopping cart</a></li>
+                                <li><a href="/contactus">Contact us</a></li>                            
                                 
                             </ul>
                         </div>
@@ -880,11 +995,11 @@
                     <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li><a href="#">Terms</a></li>
                                 <li><a href="#">Privacy</a></li>
                                 <li><a href="#">Policy</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="/contactus">Contact</a></li>
                             </ul>
                         </div>
                     </div>

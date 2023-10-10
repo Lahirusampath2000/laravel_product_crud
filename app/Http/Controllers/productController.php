@@ -76,7 +76,7 @@ class productController extends Controller
         $data->save();
         $datas=Product::all();
 
-        return redirect('/')->with('products', $datas)->with('success', 'Product updated successfully');
+        return redirect('/admin')->with('products', $datas)->with('success', 'Product updated successfully');
 
         //return view('welcome')->with('products',$datas);
 

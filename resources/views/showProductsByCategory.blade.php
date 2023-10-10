@@ -66,11 +66,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+
+   
     
     
 
 </head>
 <body>
+    
+
+
     
     <!------------------navbar-------------->
     <div class="nav-controller">
@@ -85,16 +94,18 @@
                 <a class="nav-item nav-link" href="/user">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
                 <a class="nav-item nav-link" href="/admin">Admin</a>
-
+            
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                    <!-- Add category-related links here -->
+
+                       
+
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'Chocolate') }}">Chocolate</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'biscuit') }}">Biscuit</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'icecream') }}">Ice cream</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'bakery') }}">Bakery</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'beverages') }}">Beverages</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'diary food') }}">Diary Food</a>
                         <a class="dropdown-item" href="{{ route('showProductsByCategory', 'household') }}">Household</a>
@@ -104,6 +115,7 @@
                 
                     </div>
                 </li>
+                
             </div>
                 <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('searchProducts') }}">
                     {{csrf_field()}}

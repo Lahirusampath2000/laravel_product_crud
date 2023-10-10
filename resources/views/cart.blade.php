@@ -231,15 +231,76 @@
             max-height:150px;
             border-radius: 50%;
         }
+
+
         
 
         /*-------------------end of footer----------------*/
+        .dt-container {
+            color: #fff; 
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; 
+            font-family: arial;
+            font-weight: bold;
+            border:1px solid #FFD700;
+            width:340px;
+            padding:10px;
+            margin-left: auto;
+            margin-right: 300px;
+        }
+        .footer-logo{
+            margin-left: 100px;
+            margin-right: auto; 
+        }
+
     </style>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Add Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-<body>
+<body onLoad="renderTime();">
+    <script>
+        function renderTime(){
+            //date
+            var mydate = new Date();
+            var year =mydate.getYear();
+                if(year <1000){
+                    year +=1900
+                }
+            var day = mydate.getDay();
+            var month =mydate.getMonth();
+            var daym = mydate.getDate();
+            var dayarray = new Array("Sunday,","Monday,","Tuesday,","Wednesday,","Thursday,","Friday,","Saturday,");
+            var montharray= new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+            //date end
+
+            //Time
+            var currentTime= new Date();
+            var h= currentTime.getHours();
+            var m= currentTime.getMinutes();
+            var s= currentTime.getSeconds();
+                if(h==24){
+                    h=0;
+                }else if(h>12){
+                    h=h-0;
+                }
+
+                if(h<10){
+                    h="0"+h;
+                }
+                if(m<10){
+                    m="0"+m;
+                }
+                if(s<10){
+                    s="0"+s;
+                }
+                var myClock=document.getElementById("clockDisplay");
+                myClock.textContent=""+dayarray[day]+" "+daym+" "+montharray[month]+" "+year+" | "+h+":"+m+":"+s;
+                myClock.innerText=""+dayarray[day]+" "+daym+" "+montharray[month]+" "+year+" | "+h+":"+m+":"+s;
+
+                setTimeout("renderTime()",1000);
+        } 
+        renderTime();      
+    </script>
 
 
     <div class="nav-controller">
@@ -257,8 +318,10 @@
                 <a class="nav-item nav-link" href="/user" style="color:white">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart" style="color:white">Shopping cart</a>
                 <a class="nav-item nav-link" href="/admin" style="color:white">Admin</a>
+                
             </div>
             </div>
+            <div id="clockDisplay" class="dt-container"></div>
         </nav>
 
     </div>
@@ -386,10 +449,7 @@
                             <div class="footer-logo">
                                 <a href="index.html"><img src="logo/supermarket.jpg" class="img-fluid" alt="logo"></a>
                             </div>
-                            <div class="footer-text">
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
-                                elit,Lorem ipsum dolor sit amet.</p>
-                            </div>
+                            
                             <div class="footer-social-icon text-center" style="text-align: center; ">
                                 <span>Follow us</span>
                                 <a href="#" ><i class="fab fa-facebook-f fa-2x" style="color: #3b5998;"></i></a>
@@ -404,11 +464,11 @@
                                 <h3>Useful Links</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">about us</a></li>
-                                <li><a href="http://127.0.0.1:8000/user">Dashboard</a></li>
-                                <li><a href="http://127.0.0.1:8000/cart">Shopping cart</a></li>
-                                <li><a href="http://127.0.0.1:8000/contactus">Contact us</a></li>                            
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/aboutus">about us</a></li>
+                                <li><a href="/user">Dashboard</a></li>
+                                <li><a href="/cart">Shopping cart</a></li>
+                                <li><a href="/contactus">Contact us</a></li>                            
                                 
                             </ul>
                         </div>

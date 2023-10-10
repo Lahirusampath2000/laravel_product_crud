@@ -87,3 +87,7 @@ Route::get('/contactus', function () {
 });
 
 Route::get('/user', [productController::class, 'showUserPage'])->name('user'); //special product
+
+Route::get('/aboutus',function(){
+    return view('aboutus');
+});

@@ -185,7 +185,16 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->category}}</td>
                                     <td>{{$product->price}}</td>
-                                    <td>{{$product->quantity}}</td>
+                                    
+                                    <td>
+                                        @if($product->quantity > 0)
+                                            {{$product->quantity}}
+                                        @else
+                                            <span style="color: red;">Out of Stock</span>
+                                        @endif
+                                    </td>
+                                    
+                                    <!--<td>{{$product->quantity}}</td>-->
                                     <td>
                                     
                                         @if($product->image)

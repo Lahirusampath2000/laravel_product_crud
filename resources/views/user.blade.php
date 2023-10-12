@@ -22,14 +22,11 @@
     }
 
     .product-card{
-        width: 250px;
-        height: 390px;
+        width: 340px;
+        height: 500px;
     }
 
-   /* .product-card.product-image{ 
-        max-width: 100px;
-        height: auto;
-    }*/
+   
 
     .nav-logo {
         margin-bottom: 5px;
@@ -311,6 +308,19 @@
 
         
 
+        /*.product-actions {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            margin-right: 5px;
+        }*/
+
+        .quantity-input {
+            width: 40px;
+            margin-right: 5px;
+            margin-left:10px;
+        }
+
         
 
 
@@ -570,27 +580,88 @@
                             </div>
                 
                             
-                            <div class="card-body" style="height: 150px; overflow-y: auto;">
-                                <h5 class="card-title" style="text-align:center">{{ $product->name }}</h5>
+                            <div class="card-body " style="height: 150px; overflow-y: auto;">
+                                <h6 class="card-title product-title" >{{ $product->name }}</h6>
+                                <br>
+                                
                                 <p class="card-text">
+
+                                
                                     
-                                    <span class="small-text">Price: Rs.{{ number_format($product->price ,2)}}
-                                    <span class="float-right small-text">Quantity: {{ $product->quantity }}
+                                    <span class="small-text" style="margin-right: 10px;"><b>Price: Rs.{{ number_format($product->price ,2)}}</b>
+                                
+                                    
+                                    
+                                      
+                                    &nbsp
+                                    &nbsp
+                                    &nbsp
+                                    &nbsp
+                                    &nbsp
+                                    @if($product->quantity ==0)
+                                        <span class=" text-danger"><b>Out of Stock</b></span>
+                                    @else
+
+                                        <span class="product-actions ">
+                                            <label for="quantity{{ $product->id }}"><b>Quantity:</b></label>
+                                            <input type="number" id="quantity{{ $product->id }}" name="quantity" class="quantity-input" min="1" max="{{ $product->quantity }}" value="1">
+                                        </span>
+                                    @endif
+
+
+                                    <div class="product-details" style="display: none;">
+                                            
+                                        <p>{{ $product->description }}</p>
+                                        <p>Category: {{ $product->category }}</p>
+                                            
+                                    </div>
+
+                                
+
+
+                                    
+                                    
+                                    <!--@if($product->quantity > 0)
+                                        <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
+                                    @else
+                                        <span class="float-right small-text text-danger">Out of Stock</span>
+                                    @endif
+                                    <span class="float-right small-text">Quantity: {{ $product->quantity }}-->
+                                    
                                 </p>
                                 
                             </div>
                             <div class="card-footer text-center">
-                                <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                @if($product->quantity > 0)
+                                    <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="quantity" id="quantity-field{{ $product->id }}" value="1">
+                                        <button type="submit" class="btn btn-success">Buy Now</button>
+                                    </form>
+                                @else
+                                    <button class="btn btn-success" disabled>Buy Now</button>
+                                @endif
+                                <!--<form action="{{ route('addToCart', $product->id) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-success">Buy Now</button>
-                                </form>
+                                </form>-->
                             </div>
                         </div>
                     </div>
+                    <script>
+                        // Add an event listener to update the hidden input field when the quantity changes
+                        document.getElementById('quantity{{ $product->id }}').addEventListener('change', function () {
+                            document.getElementById('quantity-field{{ $product->id }}').value = this.value;
+                        });
+                    </script>
                 @endforeach
             
             </div>
         @endisset
+
+        <!-------------------------------------------------javascript -------------------------->
+        
+        
         <!-------------view by category---------------->
         <br>
         <br>
@@ -855,6 +926,7 @@
                     }, "slow");
                 }
             </script>
+        
         @endif
         <!--@if(isset($specialProducts) && count($specialProducts) > 0)
             <div style="text-align: center">

@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-         .product-card{
+         /*.product-card{
             width: 250px;
             height: 390px;
+    }*/
+
+    .product-card{
+        width: 300px;
+        height: 450px;
     }
 
   
@@ -59,6 +64,12 @@
         .image-container:hover .view-button {
         opacity: 1;
     }
+
+    .quantity-input {
+            width: 40px;
+            margin-right: 5px;
+            margin-left:10px;
+        }
 
 
 
@@ -163,19 +174,45 @@
                             
                             <div class="card-body" style="height: 150px; overflow-y: auto;">
                                 <h5 class="card-title">{{ $product->name }}</h5>
+                                <br>
                                 <p class="card-text">
                                     
-                                    <span class="small-text">Price: Rs.{{ number_format($product->price ,2)}}
-                                    <span class="float-right small-text">Quantity: {{ $product->quantity }}
+                                    <span class="small-text"><b>Price: Rs.{{ number_format($product->price ,2)}}</b>
+                                    &nbsp
+                                    &nbsp
+                                    @if($product->quantity ==0)
+                                        <span class=" text-danger"><b>Out of Stock</b></span>
+                                    @else
+
+                                        <span class="product-actions ">
+                                            <label for="quantity{{ $product->id }}">Quantity:</label>
+                                            <input type="number" id="quantity{{ $product->id }}" name="quantity" class="quantity-input" min="1" max="{{ $product->quantity }}" value="1">
+                                        </span>
+                                    @endif
+                                    <!--<span class="float-right small-text">Quantity: {{ $product->quantity }}-->
                                 </p>
                                 
                             </div>
+
                             <div class="card-footer text-center">
+                                @if($product->quantity > 0)
+                                    <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="quantity" id="quantity-field{{ $product->id }}" value="1">
+                                        <button type="submit" class="btn btn-success">Buy Now</button>
+                                    </form>
+                                @else
+                                    <button class="btn btn-success" disabled>Buy Now</button>
+                                @endif
+                                
+                            </div>
+
+                            <!--<div class="card-footer text-center">
                                 <form action="{{ route('addToCart', $product->id) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-success">Buy Now</button>
                                 </form>
-                            </div>
+                            </div>-->
                     </div>
                 </div>
             @endforeach

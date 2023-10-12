@@ -107,7 +107,7 @@ class productController extends Controller
                    ->orWhere('name', 'like',"%$category%")
                    ->get();
 
-        return view('showProductsByCategory',compact('products'));
+        return view('user',compact('products'));
 
 
 

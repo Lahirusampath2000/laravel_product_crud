@@ -970,21 +970,56 @@
                                     <h5 class="card-title text-center">{{ $product->name }}</h5>
                                     <p class="card-text">
                                         <span class="small-text">Price: Rs.{{ number_format($product->price, 2) }}</span>
-                                        <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
+
+                                        &nbsp
+                                        &nbsp
+                                        &nbsp
+                                        &nbsp
+                                        &nbsp
+                                        @if($product->quantity ==0)
+                                            <span class=" text-danger"><b>Out of Stock</b></span>
+                                        @else
+
+                                            <span class="product-actions ">
+                                                <label for="quantity{{ $product->id }}"><b>Quantity:</b></label>
+                                                <input type="number" id="quantity{{ $product->id }}" name="quantity" class="quantity-input" min="1" max="{{ $product->quantity }}" value="1">
+                                            </span>
+                                        @endif
+
+
+                                        <div class="product-details" style="display: none;">
+                                                
+                                            <p>{{ $product->description }}</p>
+                                            <p>Category: {{ $product->category }}</p>
+                                                
+                                        </div>
+                                        
                                     </p>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <form action="{{ route('addToCart', $product->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-success">Buy Now</button>
-                                    </form>
+                                
+                                <div class="card-footer text-center dark-mirror-footer">
+                                    @if($product->quantity > 0)
+                                        <form action="{{ route('addToCart', $product->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="quantity" id="quantity-field{{ $product->id }}" value="1">
+                                            <button type="submit" class="btn btn-success">Buy Now</button>
+                                        </form>
+                                    @else
+                                        <button class="btn btn-success" disabled>Buy Now</button>
+                                    @endif
+                                    
                                 </div>
                             </div>
                         </div>
+                        <script>
+                        
+                        document.getElementById('quantity{{ $product->id }}').addEventListener('change', function () {
+                            document.getElementById('quantity-field{{ $product->id }}').value = this.value;
+                        });
+                    </script>
                     @endforeach
                 </div>
-                <!--<button class="btn btn-primary" style="position: absolute; left: 10px;" onclick="scrollProducts(-100)">Previous</button>
-                <button class="btn btn-primary" style="position: absolute; right: 10px;" onclick="scrollProducts(100)">Next</button>-->
+               
             </div>
             <script>
                 function scrollProducts(amount) {
@@ -995,40 +1030,7 @@
             </script>
         
         @endif
-        <!--@if(isset($specialProducts) && count($specialProducts) > 0)
-            <div style="text-align: center">
-                <h2>Family supermarket special</h2>
-            </div>
-
-            <div class="table-responsive">
-                <table class="table table-borderless">
-                    <tr>
-                        @foreach($specialProducts as $product)
-                            <td class="special-product-card">
-                                <div class="card product-card">
-                                    <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
-                                        <img src="{{ asset('storage/product_images/' . $product->image) }}" class="product-image special-product-image" alt="{{ $product->name }}" width="150" height="180">
-                                    </div>
-                                    <div class="card-body" style="height: 150px; overflow-y: auto;">
-                                        <h5 class="card-title text-center">{{ $product->name }}</h5>
-                                        <p class="card-text">
-                                            <span class="small-text">Price: Rs.{{ number_format($product->price, 2) }}</span>
-                                            <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
-                                        </p>
-                                    </div>
-                                    <div class="card-footer text-center">
-                                        <form action="{{ route('addToCart', $product->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-success">Buy Now</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                        @endforeach
-                    </tr>
-                </table>
-            </div>
-        @endif-->
+        
             
 
   

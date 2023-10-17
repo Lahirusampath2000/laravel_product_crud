@@ -22,6 +22,14 @@ class Admin
         }
 
         abort(401, 'Unauthorized');
+
+        if (auth()->check() && auth()->user()->isAdmin()) {
+            return $next($request);
+        }
+
+        // Redirect to home or show an error message
+        return redirect('/')->with('error', 'Unauthorized access');
+    
     }
         //if(Auth()->user()->role=='admin'){
            // return $next($request);

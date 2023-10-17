@@ -37,6 +37,8 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 Route::get('/home',[HomeController::class, 'index']);
 
+Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware('admin'); //new
+
 
 
 Route::get('/dashboard', function () {

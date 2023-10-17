@@ -26,7 +26,28 @@
         height: 500px;
     }
 
-   
+    .product-card-category{
+        width: 250px;
+        height: 500px;
+        box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.4); /* Increased values for a more visible shadow */
+        transition: box-shadow 0.3s ease;
+        
+    }
+
+    .product-card-category:hover {
+        box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.5); /* Adjusted values for the hover effect */
+    }
+
+    .product-card{
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Increased values for a more visible shadow */
+        transition: box-shadow 0.3s ease;
+        
+    }
+
+    
+    
+    
+   /*-------------------------navbar-------------------*/
 
     .nav-logo {
         margin-bottom: 5px;
@@ -34,6 +55,12 @@
     .nav-logo img {
         max-width: 50px;
     }
+
+    
+    
+
+
+    /*-----------------------------navbar end-----------------------------*/
 
     .product-card .small-text {
     font-size: 14px; 
@@ -43,6 +70,7 @@
     .image-container {
     position: relative;
     display: inline-block;
+    
 }
 
     .view-button {
@@ -71,13 +99,50 @@
     opacity: 1;
 }
 
+/*  ------animation----*/
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(0.5deg); }
+    50% { transform: translateX(5px) rotate(-0.5deg); }
+    75% { transform: translateX(-5px) rotate(0.5deg); }
+    100% { transform: translateX(0); }
+}
+
+
+.product-image:hover {
+    animation: shake 0.5s;
+}
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------slider--------------------*/
+.slider-container {
+    background-color: #000; /* Set the background color to match your slides */
+    overflow: hidden; /* Ensure overflow is hidden */
+    position: relative;
+    
+}
+
+
+
 .carousel-inner {
     height: 600px; /* Adjust this value to your desired height */
+    overflow: hidden;/*new*/
+   
 }
 
 .carousel-item {
+    
     height: 600px; /* Adjust this value to your desired height */
 }
+
+
 
 /* Center the images vertically within the slider */
 .carousel-item img {
@@ -87,6 +152,7 @@
 /*-----------------------special product section------------*/ 
 .special-carousel-inner {
     height: 350px; /* Adjust this value to your desired height */
+    
 }
 
 .special-slide {
@@ -98,6 +164,11 @@
     object-fit: cover;
     height: 100%;
 }
+
+
+
+
+/*----------------------carousal end-------------------------*/
 
 .special-product-card {
     max-width: 100%;
@@ -532,11 +603,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>    
 
 
-    <!--<div class="login-register-buttons">
-        <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
-        <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
-    </div>-->
-
+   
     
     <div class='container' >
             <div class="row">
@@ -581,7 +648,7 @@
                 
                             
                             <div class="card-body " style="height: 150px; overflow-y: auto;">
-                                <h6 class="card-title product-title" >{{ $product->name }}</h6>
+                                <h6 class="card-title text-center product-title" >{{ $product->name }}</h6>
                                 <br>
                                 
                                 <p class="card-text">
@@ -631,7 +698,7 @@
                                 </p>
                                 
                             </div>
-                            <div class="card-footer text-center">
+                            <div class="card-footer text-center dark-mirror-footer">
                                 @if($product->quantity > 0)
                                     <form action="{{ route('addToCart', $product->id) }}" method="POST">
                                         @csrf
@@ -674,7 +741,7 @@
             <div class="row">
 
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
+                    <div class="card product-card-category"  >
                         <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
                             <div class="image-container">
                                 <img src="/category_img/choc_category.jpg" class="category-image" alt="" width="250" height="300">
@@ -692,8 +759,8 @@
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category"  >
+                        <div class="d-flex justify-content-center align-items-center" >
                             <div class="image-container">
                                 <img src="/category_img/biscuit-category.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'biscuit') }}" class="view-button">View</a>
@@ -708,8 +775,8 @@
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category" >
+                        <div class="d-flex justify-content-center align-items-center" >
                             <div class="image-container">
                                 <img src="/category_img/bakery.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'bakery') }}" class="view-button">View</a>
@@ -736,8 +803,8 @@
 
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category"  >
+                        <div class="d-flex justify-content-center align-items-center" >
                             <div class="image-container">
                                 <img src="/category_img/bev_cat.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'beverages') }}" class="view-button">View</a>
@@ -754,8 +821,8 @@
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category" >
+                        <div class="d-flex justify-content-center align-items-center" >
                             <div class="image-container">
                                 <img src="/category_img/diary-cat.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'diary food') }}" class="view-button">View</a>
@@ -771,8 +838,8 @@
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category"  >
+                        <div class="d-flex justify-content-center align-items-center" >
                             <div class="image-container">
                                 <img src="/category_img/household-cat.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'household') }}" class="view-button">View</a>
@@ -791,8 +858,8 @@
             <br>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category"  >
+                        <div class="d-flex justify-content-center align-items-center">
                             <div class="image-container">
                                 <img src="/category_img/inst_cat.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'instant food') }}" class="view-button">View</a>
@@ -808,8 +875,8 @@
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category"  >
+                        <div class="d-flex justify-content-center align-items-center" >
                             <div class="image-container">
                                 <img src="/category_img/meat-cat.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'meat') }}" class="view-button">View</a>
@@ -825,8 +892,8 @@
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <div class="card product-card" style="height: 300px;" >
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="card product-card-category">
+                        <div class="d-flex justify-content-center align-items-center" >
                             <div class="image-container">
                                 <img src="/category_img/fruit.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'fruit') }}" class="view-button">View</a>

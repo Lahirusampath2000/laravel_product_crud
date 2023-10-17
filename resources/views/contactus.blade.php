@@ -523,6 +523,28 @@
 
 
 
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            }
+
+            .col-xl-4 {
+            flex: 1 0 auto;
+            text-align: center;
+            }
+
+            .col-xl-4 > .cta-text {
+            margin-bottom: 10px;
+            }
+
+            .cta-text h4 {
+            font-size: 18px;
+            margin-bottom: 0;
+            }
+
+
+
     </style>
 </head>
 <body onLoad="renderTime();">
@@ -584,6 +606,38 @@
           <p class="text-blk section-subhead">
           Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.
           </p>
+          <div class="row">
+                <div class="col-xl-4">
+                    <div class="single-cta">
+                    <i class="fas fa-phone"></i>
+                    <div class="cta-text">
+                        <h4>Call us</h4>
+                        <br>
+                        <span>+94 76 475 8136</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="single-cta">
+                    <far fa-envelope-open></far>
+                    <div class="cta-text">
+                        <h4>Mail us</h4>
+                        <br>
+                        <span>lahiru123@gmail.com</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="single-cta">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="cta-text">
+                        <h4>Find us</h4>
+                        <span></span>
+                    </div>
+                    </div>
+                </div>
+          </div>
+          <br>
           <div class="icons-container">
             <a class="share-icon">
               <img class="img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-twitter.png">

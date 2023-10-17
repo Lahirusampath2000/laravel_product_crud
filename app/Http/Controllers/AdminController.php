@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+
 
 class AdminController extends Controller
 {
@@ -11,7 +13,8 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 
-    //public function Index(){
-        //return view('admin');
-    //}
+    public function Index(){
+        $products = Product::all();
+        return view('welcome')->with('products', $products);
+    }
 }

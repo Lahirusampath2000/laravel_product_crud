@@ -24,26 +24,117 @@
             right: 20px; 
     }
 
-    .dt-container {
-            color: #fff; 
-            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; 
-            font-family: arial;
-            font-weight: bold;
-            border:1px solid #FFD700;
-            width:340px;
-            padding:10px;
-            margin-left: auto;
-            margin-right: 10px;
+        .dt-container {
+                color: #fff; 
+                text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; 
+                font-family: arial;
+                font-weight: bold;
+                border:1px solid #FFD700;
+                width:340px;
+                padding:10px;
+                margin-left: auto;
+                margin-right: 10px;
+            }
+
+        /*------------------------------navbar----------------------------------*/
+        .navbar {
+            background-color: #111;
+            transition: top 0.3s; /* Add transition for smooth effect */
+            border-bottom: 1px solid #555;
         }
+
+        .navbar a {
+            color: white;
+        }
+
+        .navbar a:hover {
+            color: #f1f1f1;
+        }
+
+        .fixed-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        /*-----------------------------------end of navbar-----------------------------*/
+
+        /*------------------------------------------------sidebar---------------------------------*/
+        .sidebar {
+            height: 100%; /* 100% Full-height */
+            width: auto; /* 0 width - change this with JavaScript */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Stay on top */
+            top: -20;
+            left: 0;
+            background-color: #343a40;  /* Black*/
+            overflow-x: hidden; /* Disable horizontal scroll */
+            padding-top: 60px; /* Place content 60px from the top */
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+            }
+
+            /* The sidebar links */
+            .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            }
+
+            /* When you mouse over the navigation links, change their color */
+            .sidebar a:hover {
+            color: #f1f1f1;
+            }
+
+            /* Position and style the close button (top right corner) */
+            .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            }
+
+            /* The button used to open the sidebar */
+            .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            }
+
+            .openbtn:hover {
+            background-color: #444;
+            }
+
+            /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+            #main {
+            transition: margin-left .5s; /* If you want a transition effect */
+            padding: 20px;
+            }
+
+            /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+            @media screen and (max-height: 450px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+            }
+        /*---------------------------------------end siidebar--------------------------------------*/
     </style>
+
+    
 
     
     
 
     
 </head>
-<body onLoad="renderTime();">
+<body onLoad="renderTime();" onscroll="scrollFunction()">
 <!----------------------------------------date and time script-------------------->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/tf1gt5p7I0A4Gvq4PxmdbjZr5dzT6nUmi+eUE=" crossorigin="anonymous"></script>
     <script>
         function renderTime(){
             //date
@@ -85,7 +176,15 @@
 
                 setTimeout("renderTime()",1000);
         } 
-        renderTime();      
+        renderTime();   
+        
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.querySelector(".navbar").classList.add("fixed-navbar");
+            } else {
+                document.querySelector(".navbar").classList.remove("fixed-navbar");
+            }
+        }
     </script>
 
     
@@ -97,7 +196,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            
             <div class="navbar-nav">
+                <button class="openbtn" onclick="openNav()">&#9776; </button>
                 <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart">Shopping cart</a>
@@ -124,6 +225,33 @@
                 </form>
             @endguest
     </div>
+
+    <!------------------------------------------------------sidebar---------------------------------------->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Orders</a>
+        <a href="/welcome">Crud</a>
+        <a href="#">Clients</a>
+        <a href="/profile">Profile</a>
+        </div>
+
+        <div id="main">
+        
+        
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "200px";
+            document.getElementById("main").style.marginLeft = "250px";
+            }
+
+            /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+            function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            }
+    </script>
+    <!----- ------------------------------------end sidebar----------------------------------->
     <div id="clockDisplay" class="dt-container"></div>
 
     <div class='container'>

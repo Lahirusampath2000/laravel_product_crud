@@ -55,7 +55,9 @@
     .nav-logo img {
         max-width: 50px;
     }
-
+    .dropdown-menu{
+        color: white;
+    }
     
     
 
@@ -480,17 +482,17 @@
                     <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Category
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                    <div class="dropdown-menu" aria-labelledby="categoryDropdown" style="background-color: #343a40;  ">
                     <!-- Add category-related links here -->
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'Chocolate') }}">Chocolate</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'biscuit') }}">Biscuit</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'bakery') }}">Bakery</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'beverages') }}">Beverages</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'diary food') }}">Diary Food</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'household') }}">Household</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'instant food') }}">Instant Food</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'meat') }}">Meat</a>
-                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'fruit') }}">Fruit</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'Chocolate') }} " style="color:grey;">Chocolate</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'biscuit') }}" style="color:grey;">Biscuit</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'bakery') }}" style="color:grey;">Bakery</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'beverages') }}" style="color:grey;">Beverages</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'diary food') }}" style="color:grey;">Diary Food</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'household') }}" style="color:grey;">Household</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'instant food') }}" style="color:grey;">Instant Food</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'meat') }}" style="color:grey;">Meat</a>
+                        <a class="dropdown-item" href="{{ route('showProductsByCategory', 'fruit') }}" style="color:grey;">Fruit</a>
                 
                     </div>
                 </li>

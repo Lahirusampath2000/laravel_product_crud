@@ -8,7 +8,7 @@
 
     <style>
         body {
-            background-image: url('/bg-image/pxfuel.jpg');
+            background-color: black;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -267,7 +267,7 @@
                     <form method='Post' action="{{ route('saveProduct') }}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="input-group"  style="display: flex;">
-                            <input type='text' class='form-control' name='name' placeholder='Enter product name;' style="width: 800px;  background-color: transparent; border: 1px solid #ccc; border-radius: 5px;" onfocus="this.style.color='white';" onblur="this.style.color='black';">
+                            <input type='text' class='form-control' name='name' placeholder='Enter product name' style="width: 800px;  background-color: transparent; border: 1px solid #ccc; border-radius: 5px;" onfocus="this.style.color='white';" onblur="this.style.color='black';">
                         </div>
                        
                         <br>

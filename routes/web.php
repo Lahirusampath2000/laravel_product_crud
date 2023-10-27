@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,3 +94,20 @@ Route::get('/user', [productController::class, 'showUserPage'])->name('user'); /
 Route::get('/aboutus',function(){
     return view('aboutus');
 });
+
+//----------stripe-------------
+
+Route::post('/create-payment-intent', [PaymentController::class, 'createPaymentIntent']);
+
+
+
+/*Route::get('stripe',[PaymentController::class,'stripe']);
+
+Route::post('/stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
+
+Route::get('/success', 'App\Http\Controllers\PaymentController@success')->name('success');
+Route::get('/cancel', 'App\Http\Controllers\PaymentController@cancel')->name('cancel');*/
+
+Route::post('stripe/payment', [PaymentController::class, 'payment'])->name('stripe');
+Route::get('stripe/success', [PaymentController::class, 'success'])->name('stripe_success');
+Route::post('stripe/cancel', [PaymentController::class, 'cancel'])->name('stripe_cancel');

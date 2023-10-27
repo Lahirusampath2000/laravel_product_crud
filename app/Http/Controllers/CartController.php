@@ -128,7 +128,12 @@ class CartController extends Controller
             $totalCartPrice += $item['product']->price * $item['quantity'];
         }
 
-        // Return the cart view with cart data and total price
+        
+
+    
+        
+
+        
         return view('cart', compact('cart', 'totalCartPrice'));
         //return redirect()->route('cart')->with('success', 'Product added to cart.');
 }

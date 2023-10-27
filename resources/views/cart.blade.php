@@ -391,14 +391,30 @@
         </table>
         </div>
         
-
+        
         <div class="text-right">
             <strong>Total: Rs.{{ $totalCartPrice }}</strong>
         </div>
 
         <div class="text-center">
-            <a  class="btn btn-primary" href="{{('/checkout')}}">Proceed to Checkout</a>
+            <form action="{{route('stripe')}}" method="post">
+            @csrf
+            <input type="hidden" name="price" value="{{ $totalCartPrice }}">
+            <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+        
+            </form>
         </div>
+
+        
+
+    
+
+
+        <!--<div class="text-center">
+            
+            <a  class="btn btn-primary" href="{{('/checkout')}}">Proceed to Checkout</a>
+            
+        </div>-->
 
         @else
         <p>Your cart is empty.</p>

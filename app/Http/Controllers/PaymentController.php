@@ -141,6 +141,8 @@ class PaymentController extends Controller
                 
             ]);
 
+            
+
             return redirect()->away($response->url);
         } catch (InvalidRequestException $e) {
             // Catch Stripe-specific exceptions

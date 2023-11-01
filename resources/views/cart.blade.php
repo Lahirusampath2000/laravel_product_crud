@@ -30,6 +30,17 @@
             max-width: 50px;
         }
 
+        .cart-icon {
+            !important;
+            font-size: 20px;
+            color: black;
+        }
+
+        .cart-icont:hover {
+            !important;
+            color: red ;
+        }
+
 
 
         h1.font-weight-bold.text-primary.text-center {
@@ -256,6 +267,7 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Add Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>    
 </head>
 <body onLoad="renderTime();">
     <script>
@@ -318,6 +330,9 @@
                 <a class="nav-item nav-link" href="/user" style="color:white">Dashboard</a>
                 <a class="nav-item nav-link" href="/cart" style="color:white">Shopping cart</a>
                 <a class="nav-item nav-link" href="/admin" style="color:white">Admin</a>
+                <a class="nav-item nav-link cart-icon" href="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
                 
             </div>
             </div>
@@ -396,25 +411,25 @@
             <strong>Total: Rs.{{ $totalCartPrice }}</strong>
         </div>
 
-        <div class="text-center">
-            <form action="{{route('stripe')}}" method="post">
-            @csrf
-            <input type="hidden" name="price" value="{{ $totalCartPrice }}">
-            <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
         
+
+        <div class="text-center" >
+            <a href="/user" class="btn btn-success" style="margin-right:815px">Back to shop</a>
+            <form action="{{ route('stripe') }}" method="post" style="display: inline-block;">
+                @csrf
+                <input type="hidden" name="price" value="{{ $totalCartPrice }}">
+                <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
             </form>
+            
         </div>
+
 
         
 
     
 
 
-        <!--<div class="text-center">
-            
-            <a  class="btn btn-primary" href="{{('/checkout')}}">Proceed to Checkout</a>
-            
-        </div>-->
+        
 
         @else
         <p>Your cart is empty.</p>

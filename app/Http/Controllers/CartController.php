@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Session;
+
 class CartController extends Controller
 {
     
@@ -111,7 +113,9 @@ class CartController extends Controller
     // Store the updated cart in the session
     session()->put('cart', $cart);
 
-    return redirect()->route('cart')->with('success', 'Product added to cart.');
+    //return redirect()->route('cart')->with('success', 'Product added to cart.');
+
+    return redirect()->back()->with('success', 'Product added to cart.');
 }
 
 
@@ -124,9 +128,19 @@ class CartController extends Controller
 
         // Calculate the total price of items in the cart (you can modify this logic as needed)
         $totalCartPrice = 0;
+
+        $totalQuantity = 0;
+
+        /*foreach ($cart as $item) {
+            $totalCartPrice += $item['product']->price * $item['quantity'];
+        }*/
+
         foreach ($cart as $item) {
             $totalCartPrice += $item['product']->price * $item['quantity'];
+            $totalQuantity += $item['quantity'];
         }
+
+        return view('cart', compact('cart', 'totalCartPrice', 'totalQuantity'));
 
         
 
@@ -134,7 +148,8 @@ class CartController extends Controller
         
 
         
-        return view('cart', compact('cart', 'totalCartPrice'));
+       // return view('cart', compact('cart', 'totalCartPrice'));
+
         //return redirect()->route('cart')->with('success', 'Product added to cart.');
 }
 
@@ -196,4 +211,24 @@ class CartController extends Controller
         // Pass the cart and totalCartPrice variables to the checkout view
         return view('checkout', compact('cart', 'totalCartPrice'));
         }
+
+
+
+        public function showUserPage()
+        {
+            // Fetch special category products
+            $specialProducts = Product::where('category', 'special')->get();
+
+            // Calculate total cart quantity using the showCart method
+            $cartController = new CartController();
+            $totalQuantity = $cartController->showCart()['totalQuantity'];
+
+            // Other logic...
+
+            return view('user', compact('specialProducts', 'totalQuantity', /* other variables you need */));
+        }
+
+        
+
+        
 }

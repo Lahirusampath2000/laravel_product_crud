@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
     
     .search-controller{
         position: absolute;
-        right:700px;
+        right:670px;
     }
     
                                                        
@@ -388,11 +387,36 @@
             margin-right: 5px;
         }*/
 
+        
+
         .quantity-input {
             width: 40px;
             margin-right: 5px;
             margin-left:10px;
         }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Align items vertically in the center */
+        }
+
+        .cart-icon {
+            order: 1; /* Move the cart icon to the last position */
+            margin-right: 20px;
+        }
+
+        .navbar a:nth-last-child(2) {
+            margin-right: 20px; /* Adjust the margin as needed */
+        }
+
+
+        
+
+
+        
+
+        
 
         
 
@@ -475,8 +499,21 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user">Dashboard</a>
-                <a class="nav-item nav-link" href="/cart">Shopping cart</a>
+                <!--<a class="nav-item nav-link" href="/cart">Shopping cart</a>-->
                 <a class="nav-item nav-link" href="/admin">Admin</a>
+                <!--<a class="nav-item nav-link cart-icon" href="/cart" >
+                    <i class="fas fa-shopping-cart"></i><span class ="badge bg-danger">{{count((array)session('cart'))}}</span>
+                    
+                    
+                </a>-->
+                <a class="nav-item nav-link cart-icon" href="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge bg-danger">
+                        {{ array_reduce(session('cart', []), function($carry, $item) {
+                            return $carry + $item['quantity'];
+                        }, 0) }}
+                    </span>
+                </a>
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -511,6 +548,9 @@
         </nav>
 
     </div>
+
+    
+
     
      
     <!-------------nav bar end--------->
@@ -634,7 +674,13 @@
             
             
             
-
+        <div class="container">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+            @endif
+        </div>
         
             <br>
             <br>
@@ -729,6 +775,7 @@
         @endisset
 
         <!-------------------------------------------------javascript -------------------------->
+        
         
         
         <!-------------view by category---------------->

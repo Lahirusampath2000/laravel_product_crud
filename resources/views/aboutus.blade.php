@@ -17,6 +17,8 @@
             margin-right: 20px;
         }
 
+        
+
         .dt-container {
             color: #fff; 
             text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; 
@@ -28,7 +30,29 @@
             margin-left: auto;
             margin-right: 20px;
         }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .team-images img {
+            animation: fadeIn 3s ease-out;
+            animation-fill-mode: both;
+            /* Adjust the animation duration and easing as needed */
+        }
+
+        .h2.neon-text.mb-3 {
+            margin-right: 20px;
+            }
     </style>
+
 </head>
 <body  style="background-image: url('aboutus-img/abus2.jpg'); background-size: cover; background-position: center;" onLoad="renderTime();">
 
@@ -83,7 +107,7 @@
         <div class="col-12 col-lg-6 col-xl-5">
              <!-- Team Section -->
              <div class="team-section">
-                                <h3 class="h2 neon-text  mb-3"  style="text-align:center">Our Team</h3>
+                                <h3 class="h2 neon-text  mb-3 "  >Our Team</h3>
                                 <br>
                                 <div class="row team-images">
                                     <div class="col-6 col-md-6 mb-4">
@@ -107,7 +131,11 @@
             <div class="row justify-content-xl-center">
             <div class="col-12 col-xl-11">
                 <h2 class="h1 mb-3 neon-text" >Who Are We?</h2>
-                <p class="lead fs-4 text-secondary mb-3"  >At Family supermarket, we are more than just a place to shop – we're your community hub for fresh experiences and quality essentials. Rooted in a passion for providing families with wholesome choices, we strive to be the heartbeat of your neighborhood. From locally sourced produce to a diverse selection of international goods, our commitment is to offer a delightful shopping journey that nourishes both body and soul. Discover the difference at Family supermarket, where every aisle tells a story of quality, care, and the joy of bringing people together through exceptional products and personalized service."</p>
+                <!--<p class="lead fs-4 text-secondary mb-3"  >At Family supermarket, we are more than just a place to shop – we're your community hub for fresh experiences and quality essentials. Rooted in a passion for providing families with wholesome choices, we strive to be the heartbeat of your neighborhood. From locally sourced produce to a diverse selection of international goods, our commitment is to offer a delightful shopping journey that nourishes both body and soul. Discover the difference at Family supermarket, where every aisle tells a story of quality, care, and the joy of bringing people together through exceptional products and personalized service."</p>-->
+                <p class="lead fs-4 text-secondary mb-3" id="paragraphContent">
+                    <span>At</span> <span>Family</span> <span>supermarket,</span> <span>we</span> <span>are</span> <span>more</span> <span>than</span> <span>just</span> <span>a</span> <span>place</span> <span>to</span> <span>shop</span> <span>we're</span> <span>your</span> <span>community</span> <span>hub</span> <span>for</span> <span>fresh</span> <span>experiences</span> <span>and</span> <span>quality</span> <span>essentials.</span> <span>Rooted</span> <span>in</span> <span>a</span> <span>passion</span> <span>for</span> <span>providing</span> <span>families</span> <span>with</span> <span>wholesome</span> <span>choices,</span> <span>we</span> <span>strive</span> <span>to</span> <span>be</span> <span>the</span> <span>heartbeat</span> <span>of</span> <span>your</span> <span>neighborhood.</span> <span>From</span> <span>locally</span> <span>sourced</span> <span>produce</span> <span>to</span> <span>a</span> <span>diverse</span> <span>selection</span> <span>of</span> <span>international</span> <span>goods,</span> <span>our</span> <span>commitment</span> <span>is</span> <span>to</span> <span>offer</span> <span>a</span> <span>delightful</span> <span>shopping</span> <span>journey</span> <span>that</span> <span>nourishes</span> <span>both</span> <span>body</span> <span>and</span> <span>soul.</span> <span>Discover</span> <span>the</span> <span>difference</span> <span>at</span> <span>Family</span> <span>supermarket,</span> <span>where</span> <span>every</span> <span>aisle</span> <span>tells</span> <span>a</span> <span>story</span> <span>of</span> <span>quality,</span> <span>care,</span> <span>and</span> <span>the</span> <span>joy</span> <span>of</span> <span>bringing</span> <span>people</span> <span>together</span> <span>through</span> <span>exceptional</span> <span>products</span> <span>and</span> <span>personalized</span> <span>service.</span>
+                </p>
+
                 
                 
                 </div>
@@ -117,5 +145,16 @@
         </div>
     </div>
     </section>
+    <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+    <script>
+        gsap.from("#paragraphContent span", {
+            opacity: 0,
+            y: 10,
+            stagger: 0.1, // Adjust the stagger value for the timing between each word
+            duration: 0.5,
+            ease: "power3.out",
+        });
+    </script>
+
 </body>
 </html>

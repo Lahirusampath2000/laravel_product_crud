@@ -654,6 +654,8 @@
           </div>
         </div>
       </div>
+      
+
       <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-6 right-one" id="i1zj">
         <form class="form-box">
           <div class="container-block form-wrapper">
@@ -688,6 +690,24 @@
           </div>
         </form>
       </div>
+      
+      <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+
+      <script>
+        gsap.from("#i1zj", {
+            opacity: 0,
+            y: 20,
+            duration: 3,
+            ease: "power3.out",
+            delay: 0.5,
+            stagger: {
+                amount: 5, // Adjust the stagger amount
+            },
+        });
+    </script>
+
+
+
     </div>
   </div>
 </div>

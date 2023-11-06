@@ -335,7 +335,7 @@
         .footer-menu li a {
         font-size: 14px;
         color: #878787;
-        }
+        color: #878787;}
         .img-fluid{
             max-width:150px;
             max-height:150px;
@@ -410,9 +410,31 @@
             margin-right: 20px; /* Adjust the margin as needed */
         }
 
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+            }
 
         
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdownz {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: grey;
+        }
 
+        .nav-item:hover .dropdownz {
+            display: block;
+        }  
+        
 
         
 
@@ -435,7 +457,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="..." crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="..." crossorigin="anonymous"></script>
     <!-- Include Bootstrap's CSS -->
+    <!-- Add these lines in the head section of your HTML file -->
+    <!-- Add these lines to include Bootstrap Popover JS and CSS -->
    
+
+
 
 
 </head>
@@ -513,7 +539,54 @@
                             return $carry + $item['quantity'];
                         }, 0) }}
                     </span>
+                    <div class="dropdownz">
+                    @if(!empty($cart) && count($cart) > 0)
+                    <ul>
+                        @foreach($cart as $productId => $item)
+                        <li>
+                            <span>{{ $item['product']->name }}</span>
+                            <span>Rs.{{ $item['product']->price }}</span>
+                            <span>{{ $item['quantity'] }}</span>
+                            <span>Rs.{{ $item['product']->price * $item['quantity'] }}</span>
+                        </li>
+                        @endforeach
+                    </ul>
+                    @else
+                        
+                    @endif
+                    </div>
                 </a>
+
+                
+                    
+                
+
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script>
+                    // Ensure jQuery is included in your project
+
+                    // You can add more sophisticated dropdown logic here if needed
+                    // For a basic toggle, the following should work
+                    $(document).ready(function() {
+                        $('.cart-icon').hover(function() {
+                            $('.dropdownz').toggle();
+                        });
+                    });
+                </script>
+
+                
+                
+                
+                
+                
+
+
+
+
+
+
+
+                
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -546,6 +619,8 @@
             </div>
             <div id="clockDisplay" class="dt-container"></div>
         </nav>
+
+        
 
     </div>
 

@@ -49,7 +49,7 @@
         }
 
         .h2.neon-text.mb-3 {
-            margin-right: 20px;
+            margin-left: 120px;
             }
     </style>
 

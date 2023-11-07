@@ -603,7 +603,7 @@
           <p class="text-blk section-head">
             Contact Us
           </p>
-          <p class="text-blk section-subhead">
+          <p class="text-blk section-subhead" id="para">
           Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.
           </p>
           <div class="row">
@@ -692,6 +692,7 @@
       </div>
       
       <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+      
 
       <script>
         gsap.from("#i1zj", {
@@ -705,6 +706,8 @@
             },
         });
     </script>
+
+    
 
 
 

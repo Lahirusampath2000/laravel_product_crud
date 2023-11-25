@@ -14,6 +14,11 @@ use App\Mail\ReceiptEmail;
 
 use Illuminate\Support\Facades\View;
 
+use Barryvdh\Snappy\Facades\SnappyPdf;
+use Illuminate\Support\Facades\Response;
+
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
+
 class PaymentController extends Controller
 {
     public function payment(Request $request)
@@ -157,15 +162,7 @@ class PaymentController extends Controller
 
             $line_items = $session->display_items;
 
-            /*$emailContent = view('emails.receipt', [
-                'paymentStatus' => $paymentStatus,
-                'cart' => $cart,
-                'session' => $session,
-            ])->render();
-
-            $customerEmail='phlsampath2000@gmail.com';
-
-            Mail::to($customerEmail)->send(new ReceiptEmail($paymentStatus, $cart, $session));*/
+            
     
             Log::info('Success block executed.');
 
@@ -201,6 +198,50 @@ class PaymentController extends Controller
     {
         // Handle cancellation
     }
+
+    
+
+    public function downloadReceipt(Request $request)
+    {
+        try {
+            Stripe::setApiKey(config('stripe.stripe_sk'));
+            // Retrieve the session ID from the request
+            $sessionId = $request->query('session_id');
+            
+            Log::info("Session ID: $sessionId");
+
+            $session = \Stripe\Checkout\Session::retrieve($sessionId);
+
+            Log::info("Session Data: " . json_encode($session));
+
+            // Retrieve the cart and other data as needed
+            $cart = session()->get('cart', []);
+            
+            
+
+            
+    
+            // Render the HTML content
+            $html = view('receipt', [
+                'paymentStatus' => 'Payment Successful',
+                'cart' => $cart,
+                'session' => $session,
+            ])->render();
+    
+            // Generate the PDF content
+            $pdf = SnappyPdf::loadHTML($html);
+    
+            // Download the PDF
+            return $pdf->download('receipt.pdf');
+        } catch (\Exception $e) {
+            // Handle exceptions, log errors, and redirect as needed
+            Log::error("Error in downloadReceipt method: " . $e->getMessage());
+        }
+    }
+
+    
+    
+
 }
 
 

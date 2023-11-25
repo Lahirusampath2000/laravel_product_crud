@@ -112,5 +112,8 @@ Route::post('stripe/payment', [PaymentController::class, 'payment'])->name('stri
 Route::get('stripe/success', [PaymentController::class, 'success'])->name('stripe_success');
 Route::post('stripe/cancel', [PaymentController::class, 'cancel'])->name('stripe_cancel');
 
+Route::get('/download-receipt/{sessionId}', 'App\Http\Controllers\PaymentController@downloadReceipt')->name('downloadReceipt');
+
+Route::get('/download-receipt', 'App\Http\Controllers\PaymentController@downloadReceipt')->name('downloadReceipt');
 
 

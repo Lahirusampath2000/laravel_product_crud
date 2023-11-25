@@ -29,6 +29,7 @@
             padding: 15px;
         }
     </style>
+    
 </head>
 <body>
     <div class="container">
@@ -72,6 +73,68 @@
             <p>Payment Time: {{ \Carbon\Carbon::createFromTimestamp($session->created)->toDateTimeString() }}</p>
         </div>
     </div>
+    
+
+    <!--@php
+        Log::info("Session ID: " . $session->id);
+    @endphp
+
+    <div class="text-center mt-4">
+        <a href="{{ route('downloadReceipt', ['session_id' => $session->id]) }}" class="btn btn-primary" download>Download Receipt</a>
+
+
+    </div>-->
+
+    <!--<a href="#" id="downloadPaymentDetails" download="payment_details.txt">
+        <button class="btn btn-primary">Download Payment Details</button>
+    </a>-->
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <a href="#" id="downloadPaymentDetails" download="payment_details.txt" class="btn btn-primary">Download Payment Details</a>
+    </div>
+
+    <script>
+        document.getElementById('downloadPaymentDetails').addEventListener('click', function () {
+            // Construct the payment details content
+            var paymentDetailsContent = "Payment Successful!:\n";
+
+            paymentDetailsContent += "Items Purchased:\n";
+            paymentDetailsContent += "Product Name\tUnit Price\tQuantity\tSubtotal\n";
+            paymentDetailsContent += "Richlife flavoured milk(chocolate) 180ml\tRs.150\t1\tRs.150\n";
+            paymentDetailsContent += "Bairaha chicken meatballs 200g\tRs.350\t2\tRs.700\n";
+
+            // Add the total amount to the content
+            paymentDetailsContent += "\nTotal Amount: Rs.850.00\n";
+
+            // Add the payment details to the content
+            paymentDetailsContent += "\nPayment Details:\n";
+            paymentDetailsContent += "Total Amount Paid: Rs.850.00\n";
+            paymentDetailsContent += "Payment Method: card\n";
+            paymentDetailsContent += "Payment Time: 2023-11-15 10:17:05\n";
+
+            // Create a Blob with the payment details content
+            var blob = new Blob([paymentDetailsContent], { type: 'text/plain' });
+
+            // Create a link element to trigger the download
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'payment_details.txt';
+
+            // Append the link element to the document and trigger a click
+            document.body.appendChild(a);
+            a.click();
+
+            // Remove the link element
+            document.body.removeChild(a);
+        });
+    </script>
+
+
+    
+    
+
+    
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

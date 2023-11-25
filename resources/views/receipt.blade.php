@@ -29,6 +29,7 @@
             padding: 15px;
         }
     </style>
+    
 </head>
 <body>
     <div class="container">
@@ -72,11 +73,11 @@
             <p>Payment Time: {{ \Carbon\Carbon::createFromTimestamp($session->created)->toDateTimeString() }}</p>
         </div>
     </div>
+    
 
-    <div class="text-center mt-4">
-        <a href="{{ route('downloadReceipt', ['sessionId' => $session->id]) }}" class="btn btn-primary" download>Download Receipt</a>
-
-    </div>
+    
+    
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

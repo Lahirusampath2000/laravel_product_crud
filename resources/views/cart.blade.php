@@ -18,8 +18,8 @@
             z-index: -1;
         }
         .table-container{
-            backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
-            background: rgba(0, 0, 0, 0.3); /* Background color to give a semi-transparent effect */
+            backdrop-filter: blur(5px); 
+            background: rgba(0, 0, 0, 0.3); 
             padding: 20px;
         }
 
@@ -49,12 +49,12 @@
     }
         .login-register-buttons {
             position: absolute;
-            top: 10px; /* Adjust the top position as needed */
-            right: 20px; /* Adjust the right position as needed */
+            top: 10px; 
+            right: 20px; 
         }
 
         .text-right{
-            color: red; /* Set text color to contrast with the background */
+            color: red; 
             font-weight: bold;
             font-family: 'Roboto',  sans-serif;
             font-size: 23px;
@@ -66,10 +66,10 @@
 
         
 
-        /* Customize text style for better visibility */
+        
         .blurred-table th,
         .blurred-table td {
-            color: black; /* Set text color to contrast with the background */
+            color: black; 
             font-weight: bold;
             font-family: 'Roboto',  sans-serif;
             font-size: 23px;
@@ -263,6 +263,29 @@
             margin-right: auto; 
         }
 
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #8000FF; }
+            50% { text-shadow: 0 0 20px #8000FF; }
+            100% { text-shadow: 0 0 10px #8000FF; }
+        }
+
+
+        .empty-cart {
+            text-align: center;
+            font-size: 30px;
+            color: black; 
+            margin-top: 75px; 
+            animation: glow 2s infinite;
+            position: relative; 
+        }
+
+        .empty-cart i {
+            font-size: 40px; 
+            margin-right: 10px;
+            
+            
+        }
+
     </style>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Add Font Awesome CSS -->
@@ -344,11 +367,7 @@
 
 
     <header>
-        <!--<div class="login-register-buttons">
-            <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
-            <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
-        </div>--->
-        <!-- Your common header content here, including login and register buttons -->
+        
 
         <div class="login-register-buttons">
             @guest
@@ -432,7 +451,11 @@
         
 
         @else
-        <p>Your cart is empty.</p>
+        <!--<p><b>Your cart is empty.</b></p>-->
+        <div class="empty-cart">
+            <p><i class="fas fa-shopping-cart"></i> <b>Your cart is empty.</b></p>
+        <!-- The empty cart icon is added with the Font Awesome class 'fas fa-shopping-cart' -->
+        </div>
         @endif
     </div>
     

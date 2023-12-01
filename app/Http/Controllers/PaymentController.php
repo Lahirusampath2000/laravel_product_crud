@@ -100,44 +100,7 @@ class PaymentController extends Controller
 
     public function success(Request $request)
     {
-        /*Log::info('Entering success method.');
-
-        try {
-            // Set your secret key. Make sure to replace 'your_stripe_secret_key_here' with your actual secret key.
-            Stripe::setApiKey(config('stripe.stripe_sk'));
-
-            // Retrieve the session ID from the request
-            $sessionId = $request->query('session_id');
-
-            // Retrieve the session to get details about the payment
-            $session = \Stripe\Checkout\Session::retrieve($sessionId);
-
-            // Add logic to determine payment status based on the session or other criteria
-            $paymentStatus = 'Payment Successful'; // Adjust this based on your actual logic
-
-            $cart = session('cart');
-
-            // Retrieve the cart and other data as needed
-            $cart = []; // Replace this with the actual logic to retrieve the cart data
-
-            Log::info('Success block executed.');
-            
-
-            return view('success', [
-                'paymentStatus' => $paymentStatus,
-                'cart' => $cart,
-                'session' => $session,
-                //'lineItems' => $lineItems,
-            ]);
-        } catch (InvalidRequestException $e) {
-            // Catch Stripe-specific exceptions
-            Log::error("Stripe Error: " . $e->getMessage());
-            return redirect()->route('cart')->with('error', 'There was an error processing your payment.');
-        } catch (\Exception $e) {
-            // Catch other exceptions
-            Log::error("Error in success method: " . $e->getMessage());
-            return redirect()->route('cart')->with('error', 'There was an error processing your payment.');
-        }*/
+        
 
         Log::info('Entering success method.');
 

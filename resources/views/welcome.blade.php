@@ -39,7 +39,7 @@
         /*------------------------------navbar----------------------------------*/
         .navbar {
             background-color: #111;
-            transition: top 0.3s; /* Add transition for smooth effect */
+            transition: top 0.3s; 
             border-bottom: 1px solid #555;
         }
 
@@ -61,16 +61,16 @@
 
         /*------------------------------------------------sidebar---------------------------------*/
         .sidebar {
-            height: 100%; /* 100% Full-height */
-            width: auto; /* 0 width - change this with JavaScript */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Stay on top */
+            height: 100%; 
+            width: auto; 
+            position: fixed; 
+            z-index: 1; 
             top: -20;
             left: 0;
-            background-color: #343a40;  /* Black*/
-            overflow-x: hidden; /* Disable horizontal scroll */
-            padding-top: 60px; /* Place content 60px from the top */
-            transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+            background-color: #343a40;  
+            overflow-x: hidden; 
+            padding-top: 60px; 
+            transition: 0.5s; 
             }
 
             /* The sidebar links */
@@ -83,7 +83,7 @@
             transition: 0.3s;
             }
 
-            /* When you mouse over the navigation links, change their color */
+           
             .sidebar a:hover {
             color: #f1f1f1;
             }
@@ -111,13 +111,13 @@
             background-color: #444;
             }
 
-            /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+           
             #main {
-            transition: margin-left .5s; /* If you want a transition effect */
+            transition: margin-left .5s; 
             padding: 20px;
             }
 
-            /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+           
             @media screen and (max-height: 450px) {
             .sidebar {padding-top: 15px;}
             .sidebar a {font-size: 18px;}
@@ -245,11 +245,13 @@
             document.getElementById("main").style.marginLeft = "250px";
             }
 
-            /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+            
             function closeNav() {
             document.getElementById("mySidebar").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
             }
+
+        closeNav();
     </script>
     <!----- ------------------------------------end sidebar----------------------------------->
     <div id="clockDisplay" class="dt-container"></div>
@@ -322,7 +324,7 @@
                                         @endif
                                     </td>
                                     
-                                    <!--<td>{{$product->quantity}}</td>-->
+                                    
                                     <td>
                                     
                                         @if($product->image)

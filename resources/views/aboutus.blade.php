@@ -9,8 +9,8 @@
 
     <style>
         .neon-text {
-            color: #fff; /* Set text color to white or another bright color */
-            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; /* Adjust the color and shadow size as needed */
+            color: #fff; 
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; 
         }
 
         .team-section h3 {
@@ -45,7 +45,7 @@
         .team-images img {
             animation: fadeIn 3s ease-out;
             animation-fill-mode: both;
-            /* Adjust the animation duration and easing as needed */
+            
         }
 
         .h2.neon-text.mb-3 {
@@ -131,7 +131,7 @@
             <div class="row justify-content-xl-center">
             <div class="col-12 col-xl-11">
                 <h2 class="h1 mb-3 neon-text" >Who Are We?</h2>
-                <!--<p class="lead fs-4 text-secondary mb-3"  >At Family supermarket, we are more than just a place to shop – we're your community hub for fresh experiences and quality essentials. Rooted in a passion for providing families with wholesome choices, we strive to be the heartbeat of your neighborhood. From locally sourced produce to a diverse selection of international goods, our commitment is to offer a delightful shopping journey that nourishes both body and soul. Discover the difference at Family supermarket, where every aisle tells a story of quality, care, and the joy of bringing people together through exceptional products and personalized service."</p>-->
+                
                 <p class="lead fs-4 text-secondary mb-3" id="paragraphContent">
                     <span>At</span> <span>Family</span> <span>supermarket,</span> <span>we</span> <span>are</span> <span>more</span> <span>than</span> <span>just</span> <span>a</span> <span>place</span> <span>to</span> <span>shop</span> <span>we're</span> <span>your</span> <span>community</span> <span>hub</span> <span>for</span> <span>fresh</span> <span>experiences</span> <span>and</span> <span>quality</span> <span>essentials.</span> <span>Rooted</span> <span>in</span> <span>a</span> <span>passion</span> <span>for</span> <span>providing</span> <span>families</span> <span>with</span> <span>wholesome</span> <span>choices,</span> <span>we</span> <span>strive</span> <span>to</span> <span>be</span> <span>the</span> <span>heartbeat</span> <span>of</span> <span>your</span> <span>neighborhood.</span> <span>From</span> <span>locally</span> <span>sourced</span> <span>produce</span> <span>to</span> <span>a</span> <span>diverse</span> <span>selection</span> <span>of</span> <span>international</span> <span>goods,</span> <span>our</span> <span>commitment</span> <span>is</span> <span>to</span> <span>offer</span> <span>a</span> <span>delightful</span> <span>shopping</span> <span>journey</span> <span>that</span> <span>nourishes</span> <span>both</span> <span>body</span> <span>and</span> <span>soul.</span> <span>Discover</span> <span>the</span> <span>difference</span> <span>at</span> <span>Family</span> <span>supermarket,</span> <span>where</span> <span>every</span> <span>aisle</span> <span>tells</span> <span>a</span> <span>story</span> <span>of</span> <span>quality,</span> <span>care,</span> <span>and</span> <span>the</span> <span>joy</span> <span>of</span> <span>bringing</span> <span>people</span> <span>together</span> <span>through</span> <span>exceptional</span> <span>products</span> <span>and</span> <span>personalized</span> <span>service.</span>
                 </p>
@@ -150,7 +150,7 @@
         gsap.from("#paragraphContent span", {
             opacity: 0,
             y: 10,
-            stagger: 0.1, // Adjust the stagger value for the timing between each word
+            stagger: 0.1, 
             duration: 0.5,
             ease: "power3.out",
         });

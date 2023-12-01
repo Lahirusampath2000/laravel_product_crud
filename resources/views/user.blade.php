@@ -43,6 +43,8 @@
         
     }
 
+
+
     
     
     
@@ -152,15 +154,15 @@
 }
 /*-----------------------special product section------------*/ 
 .special-carousel-inner {
-    height: 350px; /* Adjust this value to your desired height */
+    height: 350px; 
     
 }
 
 .special-slide {
-    height: 350px; /* Adjust this value to your desired height */
+    height: 350px; 
 }
 
-/* Center the images vertically within the slider */
+
 .special-carousel-item img {
     object-fit: cover;
     height: 100%;
@@ -380,12 +382,7 @@
 
         
 
-        /*.product-actions {
-            display: flex;
-            align-items: center;
-            margin-top: auto;
-            margin-right: 5px;
-        }*/
+        
 
         
 
@@ -402,12 +399,12 @@
         }
 
         .cart-icon {
-            order: 1; /* Move the cart icon to the last position */
+            order: 1;
             margin-right: 20px;
         }
 
         .navbar a:nth-last-child(2) {
-            margin-right: 20px; /* Adjust the margin as needed */
+            margin-right: 20px; 
         }
 
         .nav-item.dropdown:hover .dropdown-menu {
@@ -471,7 +468,69 @@
                 }
                 }
 
-        
+
+                .category-heading {
+                    text-align: center;
+                    position: relative;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                }
+
+                .category-heading h2 {
+                    display: inline-block;
+                    position: relative;
+                    padding: 0 20px;
+                    background-color:white; 
+                    color: #3498db;; 
+                    font-size: 24px; 
+                    z-index: 1; 
+                }
+
+                .category-heading::before,
+                .category-heading::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                    height: 1px; /* Line thickness */
+                    background-color: #3498db; /* Line color */
+                    z-index: 0; /* Behind the text */
+                }
+
+                .category-heading::before {
+                    left: 0;
+                }
+
+                .category-heading::after {
+                    right: 0;
+                }
+
+
+                .special-container {
+                    text-align: center;
+                    margin: 20px;
+                }
+
+                .special-text {
+                    font-family: 'Poppins', sans-serif; /* Use a modern font, you can replace 'Poppins' with any other font */
+                    font-size: 2em;
+                    font-weight: bold;
+                    position: relative;
+                    display: inline-block;
+                    padding: 0 20px;
+                    color: black; /* Adjust text color */
+                    text-shadow: 0 0 10px #00ff00; /* Add text shadow */
+                }
+
+                .special-line {
+                    height: 2px;
+                    width: 100%;
+                    background-color: #00ff00; /* Adjust line color */
+                    position: absolute;
+                    top: 50%;
+                    z-index: -1;
+                }
+
+                
 
         
 
@@ -491,9 +550,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="..." crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="..." crossorigin="anonymous"></script>
-    <!-- Include Bootstrap's CSS -->
-    <!-- Add these lines in the head section of your HTML file -->
-    <!-- Add these lines to include Bootstrap Popover JS and CSS -->
+    
    
 
 
@@ -560,13 +617,10 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="/user">Dashboard</a>
-                <!--<a class="nav-item nav-link" href="/cart">Shopping cart</a>-->
+                
                 <a class="nav-item nav-link" href="/admin">Admin</a>
-                <!--<a class="nav-item nav-link cart-icon" href="/cart" >
-                    <i class="fas fa-shopping-cart"></i><span class ="badge bg-danger">{{count((array)session('cart'))}}</span>
-                    
-                    
-                </a>-->
+                
+                </a>
                 <a class="nav-item nav-link cart-icon" href="/cart">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="badge bg-danger">
@@ -598,10 +652,7 @@
 
                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                 <script>
-                    // Ensure jQuery is included in your project
-
-                    // You can add more sophisticated dropdown logic here if needed
-                    // For a basic toggle, the following should work
+                    
                     $(document).ready(function() {
                         $('.cart-icon').hover(function() {
                             $('.dropdownz').toggle();
@@ -685,10 +736,7 @@
     
      
     <!-------------nav bar end--------->
-    <!--<div class="login-register-buttons">
-        <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
-        <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
-    </div>-->
+    
 
     <div class="login-register-buttons">
             @guest
@@ -741,29 +789,7 @@
             <span class="sr-only">Next</span>
         </a>
         </div>
-       <!------ <div class="search-container text-center" style="position: absolute; top: 7%; left: 50%; transform: translate(-50%, -50%); ">
-            
-                
-            <form method="GET" action="{{ route('searchProducts') }}" class="form-inline"  >
-                {{csrf_field()}}
-                <div class="input-group"  style="display: flex;">
-                    <input type="text" class="form-control" name="searchTerm" placeholder="Search for products" style="width: 800px;  background-color: transparent; border: 1px solid #ccc; border-radius: 5px;" onfocus="this.style.color='#fff';" onblur="this.style.color='#fff';">
-                    
-                    <button type="submit" class="btn btn-outline-primary">
-                        <i class="fas fa-search"></i> 
-                    </button>
-                    
-                </div>
-                   <div class="form-group">
-                        <button type="submit" class="btn btn-outline-primary">Search</button>
-                    </div>
-                    
-            </form>
-                
-                
-            
-            
-        </div>-------------------->          
+              
         
     </div>
 
@@ -781,20 +807,7 @@
     <div class='container' >
             <div class="row">
                 <div class='col-md-12 text-center'>
-                   <!---<div class="search-container">
-                        <form method="GET" action="{{ route('searchProducts') }}" class="form-inline">
-                            {{csrf_field()}}
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="searchTerm" placeholder="Search for products" style="width: 800px;">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-outline-primary">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                    
-                        </form>
-                    </div>--->  
+                     
                 
 
                 </div> 
@@ -867,12 +880,7 @@
 
                                     
                                     
-                                    <!--@if($product->quantity > 0)
-                                        <span class="float-right small-text">Quantity: {{ $product->quantity }}</span>
-                                    @else
-                                        <span class="float-right small-text text-danger">Out of Stock</span>
-                                    @endif
-                                    <span class="float-right small-text">Quantity: {{ $product->quantity }}-->
+                                    
                                     
                                 </p>
                                 
@@ -887,15 +895,12 @@
                                 @else
                                     <button class="btn btn-success" disabled>Buy Now</button>
                                 @endif
-                                <!--<form action="{{ route('addToCart', $product->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-success">Buy Now</button>
-                                </form>-->
+                                
                             </div>
                         </div>
                     </div>
                     <script>
-                        // Add an event listener to update the hidden input field when the quantity changes
+                        // event listener to update the hidden input field when the quantity changes
                         document.getElementById('quantity{{ $product->id }}').addEventListener('change', function () {
                             document.getElementById('quantity-field{{ $product->id }}').value = this.value;
                         });
@@ -913,9 +918,14 @@
         <br>
         <br>
         <br>
-            <div style="text-align:center">
+            <!--<div style="text-align:center">
                 <h2>shop by category</h2>
+            </div>-->
+
+            <div class="category-heading">
+                <h2>Shop by Category</h2>
             </div>
+
             <br>
             <br>
             <div class="row">
@@ -926,7 +936,7 @@
                             <div class="image-container">
                                 <img src="/category_img/choc_category.jpg" class="category-image" alt="" width="250" height="300">
                                 <a href="{{ route('showProductsByCategory', 'Chocolate') }}" class="view-button">View</a>
-                                <!--<button class="view-button">View</button>-->
+                                
                             </div>
                             
                         </div>
@@ -1133,9 +1143,16 @@
         <br>
 
         @if(isset($specialProducts) && count($specialProducts) > 0)
-            <div style="text-align: center">
+            <!--<div style="text-align: center">
                 <h2>Family supermarket special</h2>
+            </div>-->
+
+            <div class="special-container">
+                <div class="special-line"></div>
+                <h2 class="special-text">Family supermarket special</h2>
+                <div class="special-line"></div>
             </div>
+            
             <br>
             <br>
             <div class="table-responsive">

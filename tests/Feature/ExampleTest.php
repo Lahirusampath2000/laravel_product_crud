@@ -18,4 +18,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_the_aboutus_returns_a_successful_response()
+    {
+        $response = $this->get('/aboutus');
+
+        $response->assertStatus(200);
+    }
 }

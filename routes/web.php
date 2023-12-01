@@ -31,7 +31,7 @@ Route::get('/dashboard',[AdminController::class, 'Dashboard'])->name('admin.dash
 });
 /* ---------------end admin route-----------     */
 
-//Route::get('post', [HomeController::class,'post'])-> middleware(['auth','admin']);
+
 
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -83,7 +83,7 @@ Route::post('/remove-from-cart/{productId}', 'App\Http\Controllers\CartControlle
 
 Route::get('/checkout', 'App\Http\Controllers\CartController@checkout');
 
-//Route::get('/user/showProductsByCategory/{category}', 'App\Http\Controllers\productController@showProductsByCategory')->name('showProductsByCategory');
+
 Route::get('/user{category}', 'App\Http\Controllers\productController@showProductsByCategory')->name('showProductsByCategory');
 Route::get('/contactus', function () {
     return view('contactus');
@@ -101,12 +101,7 @@ Route::post('/create-payment-intent', [PaymentController::class, 'createPaymentI
 
 
 
-/*Route::get('stripe',[PaymentController::class,'stripe']);
 
-Route::post('/stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
-
-Route::get('/success', 'App\Http\Controllers\PaymentController@success')->name('success');
-Route::get('/cancel', 'App\Http\Controllers\PaymentController@cancel')->name('cancel');*/
 
 Route::post('stripe/payment', [PaymentController::class, 'payment'])->name('stripe');
 Route::get('stripe/success', [PaymentController::class, 'success'])->name('stripe_success');

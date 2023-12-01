@@ -75,19 +75,7 @@
     </div>
     
 
-    <!--@php
-        Log::info("Session ID: " . $session->id);
-    @endphp
-
-    <div class="text-center mt-4">
-        <a href="{{ route('downloadReceipt', ['session_id' => $session->id]) }}" class="btn btn-primary" download>Download Receipt</a>
-
-
-    </div>-->
-
-    <!--<a href="#" id="downloadPaymentDetails" download="payment_details.txt">
-        <button class="btn btn-primary">Download Payment Details</button>
-    </a>-->
+    
 
     <div style="display: flex; justify-content: center; align-items: center;">
         <a href="#" id="downloadPaymentDetails" download="payment_details.txt" class="btn btn-primary">Download Payment Details</a>
